@@ -470,7 +470,7 @@ Format your response in a clear, structured manner.
         
         # Use the LLM service to generate the assessment
         llm_config = get_llm_config()
-        assessment_result = llm_service.generate_response(assessment_prompt, llm_config)
+        assessment_result = await llm_service.generate_response(assessment_prompt, llm_config)
         
         return BaseResponse(
             success=True,
