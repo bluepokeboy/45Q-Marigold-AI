@@ -49,11 +49,25 @@ async function startEnhancedAssessment() {
         
         if (response.ok) {
             const result = await response.json();
-            enhancedQuestions = result.questions;
-            showEnhancedAssessment();
+            console.log('Enhanced questions response:', result);
+            
+            // Handle the BaseResponse structure
+            if (result.data && result.data.questions) {
+                enhancedQuestions = result.data.questions;
+                console.log('Loaded questions:', enhancedQuestions.length);
+                showEnhancedAssessment();
+            } else if (result.questions) {
+                // Direct response structure
+                enhancedQuestions = result.questions;
+                console.log('Loaded questions:', enhancedQuestions.length);
+                showEnhancedAssessment();
+            } else {
+                console.error('Unexpected response structure:', result);
+                alert('Error: Unexpected response structure from server');
+            }
         } else {
             const error = await response.json();
-            alert('Error loading questions: ' + error.detail);
+            alert('Error loading questions: ' + (error.detail || error.message || 'Unknown error'));
         }
     } catch (error) {
         alert('Error: ' + error.message);
@@ -63,6 +77,15 @@ async function startEnhancedAssessment() {
 function showEnhancedAssessment() {
     const container = document.getElementById('enhanced-assessment-container');
     const questionsContainer = document.getElementById('all-questions-container');
+    
+    console.log('Showing enhanced assessment with questions:', enhancedQuestions);
+    
+    // Check if questions are loaded
+    if (!enhancedQuestions || !Array.isArray(enhancedQuestions) || enhancedQuestions.length === 0) {
+        console.error('No questions loaded:', enhancedQuestions);
+        alert('Error: No questions loaded. Please try again.');
+        return;
+    }
     
     // Hide the old question container
     document.getElementById('question-container').style.display = 'none';
