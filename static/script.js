@@ -117,6 +117,46 @@ function showEnhancedAssessment() {
     });
     
     questionsContainer.innerHTML = questionsHtml;
+
+    // Delegate events for "Other" radios and wire text inputs
+    const containerEl = document.getElementById('all-questions-container');
+    if (containerEl && !containerEl.__otherDelegated) {
+        containerEl.addEventListener('change', (e) => {
+            const target = e.target;
+            if (!(target instanceof HTMLInputElement)) return;
+            if (target.type === 'radio' && target.value === 'other') {
+                const name = target.name; // e.g., question-12
+                const otherDiv = document.getElementById(`other-input-${name}`);
+                if (otherDiv) {
+                    otherDiv.style.display = 'block';
+                    const txt = otherDiv.querySelector('input');
+                    if (txt) txt.focus();
+                }
+            } else if (target.type === 'radio') {
+                const name = target.name;
+                const otherDiv = document.getElementById(`other-input-${name}`);
+                if (otherDiv) {
+                    otherDiv.style.display = 'none';
+                    const txt = otherDiv.querySelector('input');
+                    if (txt) txt.value = '';
+                }
+                assessmentAnswers[name] = target.value;
+            }
+        });
+
+        containerEl.addEventListener('input', (e) => {
+            const target = e.target;
+            if (!(target instanceof HTMLInputElement)) return;
+            if (target.closest('.other-input')) {
+                // find owning question id
+                const wrapper = target.closest('.other-input');
+                if (!wrapper) return;
+                const id = wrapper.id.replace('other-input-', '');
+                assessmentAnswers[id] = target.value;
+            }
+        });
+        containerEl.__otherDelegated = true;
+    }
 }
 
 function generateAnswerInput(question, questionId) {
@@ -1308,9 +1348,9 @@ function addChatMessage(role, content) {
 }
 
 // Handle "Other" option in select questions
-function handleOtherOption(questionId, otherValue) {
+function handleOtherCustomAnswer(questionId, otherValue) {
     if (otherValue && otherValue.trim() !== '') {
-        // Store the custom "other" answer
+        // Store the custom "other" answer (legacy handler for select-based questions)
         currentAnswer = otherValue.trim();
         console.log('Custom "other" answer:', currentAnswer);
     }
