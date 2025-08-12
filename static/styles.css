@@ -404,15 +404,7 @@ header p {
     margin-bottom: 15px;
 }
 
-/* Other option handling */
-.other-input {
-    margin-top: 10px;
-    display: none;
-}
-
-.other-input.show {
-    display: block;
-}
+/* Other option handling - removed conflicting display rule */
 
 /* Enhanced Assessment Styles */
 .question-section {
