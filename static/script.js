@@ -2,6 +2,8 @@
 let currentSessionId = '';
 let currentQuestion = null;
 let currentAnswer = '';
+let enhancedQuestions = [];
+let assessmentAnswers = {};
 
 // Function to update current answer in real-time
 function updateCurrentAnswer(value) {
@@ -26,7 +28,216 @@ function showTab(tabName) {
     event.target.classList.add('active');
 }
 
-// Eligibility Assessment Functions
+// Enhanced Assessment Functions
+async function startEnhancedAssessment() {
+    const sessionId = document.getElementById('session-id').value;
+    if (!sessionId) {
+        alert('Please enter a session ID');
+        return;
+    }
+    
+    currentSessionId = sessionId;
+    
+    try {
+        // Load the enhanced questions
+        const response = await fetch('/get-enhanced-questions', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        });
+        
+        if (response.ok) {
+            const result = await response.json();
+            enhancedQuestions = result.questions;
+            showEnhancedAssessment();
+        } else {
+            const error = await response.json();
+            alert('Error loading questions: ' + error.detail);
+        }
+    } catch (error) {
+        alert('Error: ' + error.message);
+    }
+}
+
+function showEnhancedAssessment() {
+    const container = document.getElementById('enhanced-assessment-container');
+    const questionsContainer = document.getElementById('all-questions-container');
+    
+    // Hide the old question container
+    document.getElementById('question-container').style.display = 'none';
+    
+    // Show the enhanced assessment container
+    container.style.display = 'block';
+    
+    // Generate HTML for all questions
+    let questionsHtml = '';
+    
+    enhancedQuestions.forEach((question, index) => {
+        const questionId = `question-${index}`;
+        const categoryName = question.category || 'General';
+        
+        questionsHtml += `
+            <div class="question-section" data-category="${question.category_key}">
+                <h4 class="category-title">${categoryName}</h4>
+                <div class="question-card">
+                    <div class="question-text">
+                        <strong>${index + 1}. ${question.question}</strong>
+                        ${question.required ? '<span class="required-mark">*</span>' : ''}
+                    </div>
+                    <div class="answer-input">
+                        ${generateAnswerInput(question, questionId)}
+                    </div>
+                </div>
+            </div>
+        `;
+    });
+    
+    questionsContainer.innerHTML = questionsHtml;
+}
+
+function generateAnswerInput(question, questionId) {
+    if (question.type === 'multiple_choice' && question.options && question.options.length > 0) {
+        let optionsHtml = '';
+        question.options.forEach((option, optionIndex) => {
+            const optionId = `${questionId}-option-${optionIndex}`;
+            if (option.toLowerCase() === 'other') {
+                optionsHtml += `
+                    <div class="answer-option">
+                        <label>
+                            <input type="radio" name="${questionId}" value="other" onchange="handleOtherOption('${questionId}')">
+                            Other
+                        </label>
+                        <div class="other-input" id="other-input-${questionId}" style="display: none;">
+                            <input type="text" placeholder="Please specify..." class="form-control" oninput="updateAnswer('${questionId}', this.value)">
+                        </div>
+                    </div>
+                `;
+            } else {
+                optionsHtml += `
+                    <div class="answer-option">
+                        <label>
+                            <input type="radio" name="${questionId}" value="${option}" onchange="updateAnswer('${questionId}', '${option}')">
+                            ${option}
+                        </label>
+                    </div>
+                `;
+            }
+        });
+        return `<div class="answer-options">${optionsHtml}</div>`;
+    } else {
+        return `<input type="text" class="form-control" placeholder="Enter your answer" oninput="updateAnswer('${questionId}', this.value)">`;
+    }
+}
+
+function handleOtherOption(questionId) {
+    const otherInput = document.getElementById(`other-input-${questionId}`);
+    if (otherInput) {
+        otherInput.style.display = 'block';
+        otherInput.querySelector('input').focus();
+    }
+}
+
+function updateAnswer(questionId, value) {
+    assessmentAnswers[questionId] = value;
+    console.log('Updated answer for', questionId, ':', value);
+}
+
+async function completeAssessment() {
+    // Collect all answers
+    const answers = [];
+    
+    enhancedQuestions.forEach((question, index) => {
+        const questionId = `question-${index}`;
+        const answer = assessmentAnswers[questionId] || '';
+        
+        if (answer.trim() !== '') {
+            answers.push({
+                question_id: question.id || index.toString(),
+                question: question.question,
+                answer: answer,
+                category: question.category,
+                category_key: question.category_key
+            });
+        }
+    });
+    
+    if (answers.length === 0) {
+        alert('Please answer at least one question before completing the assessment.');
+        return;
+    }
+    
+    try {
+        const response = await fetch('/complete-enhanced-assessment', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                session_id: currentSessionId,
+                answers: answers
+            })
+        });
+        
+        if (response.ok) {
+            const result = await response.json();
+            showEnhancedResults(result);
+        } else {
+            const error = await response.json();
+            alert('Error completing assessment: ' + error.detail);
+        }
+    } catch (error) {
+        alert('Error: ' + error.message);
+    }
+}
+
+function showEnhancedResults(result) {
+    const container = document.getElementById('enhanced-assessment-container');
+    const questionsContainer = document.getElementById('all-questions-container');
+    
+    // Hide questions and show results
+    questionsContainer.style.display = 'none';
+    document.querySelector('.assessment-actions').style.display = 'none';
+    
+    const resultsHtml = `
+        <div class="assessment-results">
+            <h3>🎉 Enhanced Assessment Complete!</h3>
+            <div class="results-content">
+                ${result.assessment || 'Assessment results will be displayed here.'}
+            </div>
+            <div class="results-actions">
+                <button onclick="downloadResults()" class="btn btn-info">📥 Download Results</button>
+                <button onclick="resetAssessment()" class="btn btn-warning">🔄 Start New Assessment</button>
+            </div>
+        </div>
+    `;
+    
+    container.innerHTML = resultsHtml;
+}
+
+function saveProgress() {
+    localStorage.setItem('45q_assessment_progress', JSON.stringify({
+        sessionId: currentSessionId,
+        answers: assessmentAnswers,
+        timestamp: new Date().toISOString()
+    }));
+    alert('Progress saved! You can continue later.');
+}
+
+function resetAssessment() {
+    assessmentAnswers = {};
+    enhancedQuestions = [];
+    document.getElementById('enhanced-assessment-container').style.display = 'none';
+    document.getElementById('eligibility-form').reset();
+    localStorage.removeItem('45q_assessment_progress');
+}
+
+function downloadResults() {
+    // Implementation for downloading results
+    alert('Download functionality will be implemented here.');
+}
+
+// Original Assessment Functions
 async function startAssessment() {
     const sessionId = document.getElementById('session-id').value;
     if (!sessionId) {

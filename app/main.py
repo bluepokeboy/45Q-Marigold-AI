@@ -384,6 +384,110 @@ Remember: You are the expert. Provide complete guidance, don't defer to others."
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/get-enhanced-questions")
+async def get_enhanced_questions():
+    """Get the enhanced 45Q assessment questions."""
+    try:
+        # Load the enhanced questions from the generated file
+        questions_file = "enhanced_question_base.json"
+        if os.path.exists(questions_file):
+            with open(questions_file, "r") as f:
+                data = json.load(f)
+                
+                # Flatten all questions into a single array
+                all_questions = []
+                for category_key, category_data in data["categories"].items():
+                    for question in category_data["questions"]:
+                        all_questions.append(question)
+                
+                return BaseResponse(
+                    success=True,
+                    message="Enhanced questions loaded successfully",
+                    data={
+                        "questions": all_questions,
+                        "total_questions": len(all_questions),
+                        "categories": len(data["categories"])
+                    }
+                )
+        else:
+            raise HTTPException(status_code=404, detail="Enhanced questions file not found. Please run the question generator first.")
+            
+    except Exception as e:
+        logger.error(f"Error loading enhanced questions: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.post("/complete-enhanced-assessment")
+async def complete_enhanced_assessment(request: dict):
+    """Complete the enhanced assessment with all answers."""
+    try:
+        session_id = request.get("session_id")
+        answers = request.get("answers", [])
+        
+        if not session_id:
+            raise HTTPException(status_code=400, detail="Session ID is required")
+        
+        if not answers:
+            raise HTTPException(status_code=400, detail="At least one answer is required")
+        
+        # Create a comprehensive assessment prompt
+        assessment_prompt = f"""
+You are an expert 45Q tax credit eligibility assessor. Analyze the following facility information and provide a comprehensive eligibility assessment.
+
+FACILITY ASSESSMENT DATA:
+Session ID: {session_id}
+Total Questions Answered: {len(answers)}
+
+ANSWERS PROVIDED:
+"""
+        
+        # Add all answers to the prompt
+        for answer in answers:
+            assessment_prompt += f"\nQuestion: {answer['question']}"
+            assessment_prompt += f"\nAnswer: {answer['answer']}"
+            assessment_prompt += f"\nCategory: {answer['category']}\n"
+        
+        assessment_prompt += """
+
+ASSESSMENT REQUIREMENTS:
+1. Determine if the facility is eligible for 45Q tax credits
+2. Identify which specific 45Q provisions apply
+3. Provide reasoning for eligibility determination
+4. Estimate potential credit amounts if eligible
+5. Identify any missing information that could affect eligibility
+6. Provide specific next steps and recommendations
+
+Please provide a comprehensive assessment with:
+- ELIGIBILITY: Yes/No with clear reasoning
+- APPLICABLE PROVISIONS: List specific 45Q provisions
+- CREDIT ESTIMATES: Potential credit amounts if eligible
+- MISSING INFORMATION: Any critical gaps
+- NEXT STEPS: Specific recommendations
+- RISK FACTORS: Any potential issues or concerns
+
+Format your response in a clear, structured manner.
+"""
+        
+        # Use the LLM service to generate the assessment
+        llm_config = get_llm_config()
+        assessment_result = llm_service.generate_response(assessment_prompt, llm_config)
+        
+        return BaseResponse(
+            success=True,
+            message="Enhanced assessment completed successfully",
+            data={
+                "assessment": assessment_result,
+                "session_id": session_id,
+                "questions_answered": len(answers),
+                "timestamp": datetime.now().isoformat()
+            }
+        )
+        
+    except Exception as e:
+        logger.error(f"Error completing enhanced assessment: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 @app.post("/regenerate-question-base")
 async def regenerate_question_base():
     """Regenerate the question base by running the analysis script."""

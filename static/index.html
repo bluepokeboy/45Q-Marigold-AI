@@ -28,11 +28,25 @@
                     <label for="session-id">Session ID:</label>
                     <input type="text" id="session-id" value="company-123" placeholder="Enter session ID">
                     <div class="button-group">
-                        <button onclick="startAssessment()" class="btn btn-primary">Start Traditional Assessment</button>
+                        <button onclick="startEnhancedAssessment()" class="btn btn-primary">Start Enhanced Assessment (78 Questions)</button>
+                        <button onclick="startAssessment()" class="btn btn-secondary">Start Traditional Assessment</button>
                         <button onclick="startInteractiveAssessment()" class="btn btn-success">Start Interactive Assessment</button>
                     </div>
                 </div>
                 
+                <div id="enhanced-assessment-container" style="display: none;">
+                    <h3>📋 Enhanced 45Q Eligibility Assessment</h3>
+                    <p>Please answer the following questions to determine your 45Q tax credit eligibility. All questions are optional but more complete answers will provide better assessment results.</p>
+                    
+                    <div id="all-questions-container"></div>
+                    
+                    <div class="assessment-actions">
+                        <button onclick="completeAssessment()" class="btn btn-success btn-large">🎯 Complete Assessment</button>
+                        <button onclick="saveProgress()" class="btn btn-secondary">💾 Save Progress</button>
+                        <button onclick="resetAssessment()" class="btn btn-warning">🔄 Reset</button>
+                    </div>
+                </div>
+
                 <div id="question-container" style="display: none;">
                     <h3>Question <span id="question-number">1</span> of <span id="total-questions">15</span></h3>
                     <div id="current-question"></div>
