@@ -132,7 +132,7 @@ function generateAnswerInput(question, questionId) {
                             Other
                         </label>
                         <div class="other-input" id="other-input-${questionId}" style="display: none;">
-                            <input type="text" placeholder="Please specify..." class="form-control" oninput="updateAnswer('${questionId}', this.value)">
+                            <input type="text" placeholder="Please specify..." class="form-control" oninput="updateAnswer('${questionId}', this.value)" onfocus="console.log('Other input focused for:', '${questionId}')">
                         </div>
                     </div>
                 `;
@@ -154,16 +154,32 @@ function generateAnswerInput(question, questionId) {
 }
 
 function handleOtherOption(questionId) {
+    console.log('Handling other option for:', questionId);
     const otherInput = document.getElementById(`other-input-${questionId}`);
     if (otherInput) {
         otherInput.style.display = 'block';
-        otherInput.querySelector('input').focus();
+        const textInput = otherInput.querySelector('input');
+        if (textInput) {
+            textInput.focus();
+            // Clear any previous answer for this question
+            assessmentAnswers[questionId] = '';
+        }
+    } else {
+        console.error('Other input not found for:', questionId);
     }
 }
 
 function updateAnswer(questionId, value) {
     assessmentAnswers[questionId] = value;
     console.log('Updated answer for', questionId, ':', value);
+    
+    // If this is an "Other" text input, make sure the radio button is selected
+    if (value && value.trim() !== '') {
+        const radioButton = document.querySelector(`input[name="${questionId}"][value="other"]`);
+        if (radioButton) {
+            radioButton.checked = true;
+        }
+    }
 }
 
 async function completeAssessment() {
