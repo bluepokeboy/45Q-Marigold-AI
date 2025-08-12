@@ -242,6 +242,7 @@ async function completeAssessment() {
         
         if (response.ok) {
             const result = await response.json();
+            console.log('Assessment response:', result);
             showEnhancedResults(result);
         } else {
             const error = await response.json();
@@ -254,12 +255,25 @@ async function completeAssessment() {
 
 function showEnhancedResults(result) {
     console.log('Showing enhanced results:', result);
+    console.log('Result structure:', {
+        hasData: !!result.data,
+        hasAssessment: !!result.assessment,
+        dataAssessment: result.data?.assessment,
+        directAssessment: result.assessment
+    });
     
     const container = document.getElementById('enhanced-assessment-container');
     const questionsContainer = document.getElementById('all-questions-container');
     
+    console.log('Container elements:', {
+        container: container,
+        questionsContainer: questionsContainer
+    });
+    
     // Hide questions and show results
-    questionsContainer.style.display = 'none';
+    if (questionsContainer) {
+        questionsContainer.style.display = 'none';
+    }
     const assessmentActions = document.querySelector('.assessment-actions');
     if (assessmentActions) {
         assessmentActions.style.display = 'none';
@@ -269,8 +283,12 @@ function showEnhancedResults(result) {
     let assessmentText = 'Assessment results will be displayed here.';
     if (result.data && result.data.assessment) {
         assessmentText = result.data.assessment;
+        console.log('Using data.assessment:', assessmentText.substring(0, 100) + '...');
     } else if (result.assessment) {
         assessmentText = result.assessment;
+        console.log('Using direct assessment:', assessmentText.substring(0, 100) + '...');
+    } else {
+        console.log('No assessment found in result');
     }
     
     const resultsHtml = `
@@ -286,7 +304,9 @@ function showEnhancedResults(result) {
         </div>
     `;
     
+    console.log('Setting container HTML');
     container.innerHTML = resultsHtml;
+    console.log('Results HTML set successfully');
 }
 
 function saveProgress() {
