@@ -810,134 +810,9 @@ function displayQuestionResults(result) {
     questionResults.style.display = 'block';
 }
 
-// Document Upload Functions
-async function uploadDocuments() {
-    const fileInput = document.getElementById('file-upload');
-    const files = fileInput.files;
-    
-    if (files.length === 0) {
-        alert('Please select files to upload');
-        return;
-    }
-    
-    const formData = new FormData();
-    for (let file of files) {
-        formData.append('files', file);
-    }
-    
-    try {
-        const response = await fetch('/upload-documents', {
-            method: 'POST',
-            body: formData
-        });
-        
-        if (response.ok) {
-            const result = await response.json();
-            displayUploadResults(result);
-            refreshStats();
-        } else {
-            const error = await response.json();
-            alert('Error uploading documents: ' + error.detail);
-        }
-    } catch (error) {
-        alert('Error: ' + error.message);
-    }
-}
 
-function displayUploadResults(result) {
-    const uploadResults = document.getElementById('upload-results');
-    const uploadContent = document.getElementById('upload-content');
-    
-    uploadContent.innerHTML = `
-        <div class="results-card">
-            <h4>📊 Upload Results</h4>
-            <p><strong>Documents Processed:</strong> ${result.documents_processed}</p>
-            <p><strong>Total Chunks Created:</strong> ${result.total_chunks}</p>
-            <p><strong>Vector DB Updated:</strong> ${result.vector_db_updated ? 'Yes' : 'No'}</p>
-        </div>
-    `;
-    
-    uploadResults.style.display = 'block';
-}
 
-async function refreshStats() {
-    try {
-        const response = await fetch('/vector-store-stats');
-        if (response.ok) {
-            const result = await response.json();
-            const stats = result.data;
-            
-            document.getElementById('doc-count').textContent = stats.total_documents || '0';
-            document.getElementById('chunk-count').textContent = stats.total_documents || '0';
-        }
-    } catch (error) {
-        console.error('Error refreshing stats:', error);
-    }
-}
 
-// Function to analyze documents and generate better questions
-async function analyzeDocumentsForQuestions() {
-    const questionInput = document.getElementById('question-input');
-    if (!questionInput) return;
-    
-    const analysisPrompt = `Based on the 45Q tax credit documents in your knowledge base, analyze what questions we should ask clients to determine their eligibility. 
-
-Please provide:
-1. A comprehensive list of eligibility criteria questions
-2. Follow-up questions that might be needed based on different facility types
-3. Questions about specific requirements for different provisions
-4. Any additional questions that would help determine qualification
-
-Focus on making this interactive and thorough.`;
-
-    questionInput.value = analysisPrompt;
-    
-    try {
-        const response = await fetch('/ask-question', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                question: analysisPrompt
-            })
-        });
-        
-        if (response.ok) {
-            const result = await response.json();
-            console.log('Document analysis for questions:', result);
-            
-            // Store the analysis for use in eligibility assessment
-            window.documentAnalysis = result;
-            
-            // Show the analysis results
-            const questionResults = document.getElementById('question-results');
-            const answerContent = document.getElementById('answer-content');
-            const confidenceScore = document.getElementById('confidence-score');
-            const sources = document.getElementById('sources');
-            
-            if (questionResults) {
-                questionResults.style.display = 'block';
-                answerContent.innerHTML = `<div class="analysis-result">${result.answer}</div>`;
-                
-                if (result.confidence_score) {
-                    confidenceScore.innerHTML = `<p><strong>Confidence:</strong> ${(result.confidence_score * 100).toFixed(1)}%</p>`;
-                }
-                
-                if (result.sources && result.sources.length > 0) {
-                    sources.innerHTML = `
-                        <h4>Sources:</h4>
-                        <ul>
-                            ${result.sources.map(source => `<li>${source}</li>`).join('')}
-                        </ul>
-                    `;
-                }
-            }
-        }
-    } catch (error) {
-        console.error('Error analyzing documents:', error);
-    }
-}
 
 // Interactive eligibility assessment using LLM
 async function startInteractiveAssessment() {
@@ -1390,52 +1265,13 @@ function toggleOtherInput() {
     }
 }
 
-// Function to regenerate the question base
-async function regenerateQuestionBase() {
-    const button = event.target;
-    const originalText = button.textContent;
-    
-    try {
-        button.disabled = true;
-        button.textContent = 'Regenerating...';
-        
-        // Call the backend to regenerate the question base
-        const response = await fetch('/regenerate-question-base', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            }
-        });
-        
-        if (response.ok) {
-            const result = await response.json();
-            alert('✅ Question base regenerated successfully! The interactive assessment will now use the improved prompts.');
-            
-            // Refresh the page to load the new prompts
-            setTimeout(() => {
-                location.reload();
-            }, 1000);
-        } else {
-            const error = await response.json();
-            alert('❌ Error regenerating question base: ' + (error.detail || 'Unknown error'));
-        }
-    } catch (error) {
-        console.error('Error regenerating question base:', error);
-        alert('❌ Error: ' + error.message);
-    } finally {
-        button.disabled = false;
-        button.textContent = originalText;
-    }
-}
+
 
 // Initialize the application
 document.addEventListener('DOMContentLoaded', function() {
     // Set default session ID
     document.getElementById('session-id').value = 'company-' + Date.now();
     currentSessionId = document.getElementById('session-id').value;
-    
-    // Refresh document stats on load
-    refreshStats();
     
     // Set default date to today
     const today = new Date().toISOString().split('T')[0];

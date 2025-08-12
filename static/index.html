@@ -17,7 +17,6 @@
             <button class="tab-btn active" onclick="showTab('eligibility')">📋 Eligibility Assessment</button>
             <button class="tab-btn" onclick="showTab('forecast')">💰 Credit Forecasting</button>
             <button class="tab-btn" onclick="showTab('questions')">❓ Ask Questions</button>
-            <button class="tab-btn" onclick="showTab('documents')">📄 Document Upload</button>
         </nav>
 
         <!-- Eligibility Assessment Tab -->
@@ -29,7 +28,6 @@
                     <input type="text" id="session-id" value="company-123" placeholder="Enter session ID">
                     <div class="button-group">
                         <button onclick="startEnhancedAssessment()" class="btn btn-primary">Start Enhanced Assessment (78 Questions)</button>
-                        <button onclick="startAssessment()" class="btn btn-secondary">Start Traditional Assessment</button>
                         <button onclick="startInteractiveAssessment()" class="btn btn-success">Start Interactive Assessment</button>
                     </div>
                 </div>
@@ -137,8 +135,6 @@
                 <textarea id="question-input" rows="4" placeholder="Ask anything about 45Q tax credits, eligibility, requirements, etc..."></textarea>
                 <div class="button-group">
                     <button onclick="askQuestion()" class="btn btn-primary">Ask Question</button>
-                    <button onclick="analyzeDocumentsForQuestions()" class="btn btn-info">Analyze Documents for Better Questions</button>
-                    <button onclick="regenerateQuestionBase()" class="btn btn-warning">Regenerate Question Base</button>
                 </div>
             </div>
 
@@ -150,29 +146,7 @@
             </div>
         </div>
 
-        <!-- Document Upload Tab -->
-        <div id="documents" class="tab-content">
-            <h2>📄 Document Upload</h2>
-            <div class="form-group">
-                <label for="file-upload">Upload 45Q Documents:</label>
-                <input type="file" id="file-upload" multiple accept=".pdf,.txt,.docx">
-                <button onclick="uploadDocuments()" class="btn btn-primary">Upload Documents</button>
-            </div>
 
-            <div id="upload-results" style="display: none;">
-                <h3>📊 Upload Results</h3>
-                <div id="upload-content"></div>
-            </div>
-
-            <div id="document-stats">
-                <h3>📈 Current Document Status</h3>
-                <div id="stats-content">
-                    <p>Documents loaded: <span id="doc-count">2</span></p>
-                    <p>Total chunks: <span id="chunk-count">467</span></p>
-                    <button onclick="refreshStats()" class="btn btn-secondary">Refresh Stats</button>
-                </div>
-            </div>
-        </div>
     </div>
 
     <script src="/static/script.js"></script>
