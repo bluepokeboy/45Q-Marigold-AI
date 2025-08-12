@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Other Option</title>
+    <style>
+        .answer-option {
+            margin: 10px 0;
+        }
+        .other-input {
+            margin-top: 10px;
+            padding-left: 20px;
+            display: none;
+        }
+        .other-input input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Test Other Option</h2>
+    
+    <div class="question">
+        <h3>What is the ownership structure of the facility? *</h3>
+        <div class="answer-options">
+            <div class="answer-option">
+                <label>
+                    <input type="radio" name="ownership" value="Sole Proprietorship" onchange="handleRadioChange('ownership', 'Sole Proprietorship')">
+                    Sole Proprietorship
+                </label>
+            </div>
+            <div class="answer-option">
+                <label>
+                    <input type="radio" name="ownership" value="Partnership" onchange="handleRadioChange('ownership', 'Partnership')">
+                    Partnership
+                </label>
+            </div>
+            <div class="answer-option">
+                <label>
+                    <input type="radio" name="ownership" value="Corporation" onchange="handleRadioChange('ownership', 'Corporation')">
+                    Corporation
+                </label>
+            </div>
+            <div class="answer-option">
+                <label>
+                    <input type="radio" name="ownership" value="other" onchange="handleOtherOption('ownership')">
+                    Other
+                </label>
+                <div class="other-input" id="other-input-ownership">
+                    <input type="text" placeholder="Please specify..." oninput="updateAnswer('ownership', this.value)">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function handleOtherOption(questionId) {
+            console.log('Handling other option for:', questionId);
+            const otherInput = document.getElementById(`other-input-${questionId}`);
+            if (otherInput) {
+                otherInput.style.display = 'block';
+                const textInput = otherInput.querySelector('input');
+                if (textInput) {
+                    textInput.focus();
+                }
+            } else {
+                console.error('Other input not found for:', questionId);
+            }
+        }
+
+        function handleRadioChange(questionId, value) {
+            console.log('Handling radio change for:', questionId, 'value:', value);
+            
+            // Hide any "Other" text input for this question
+            const otherInput = document.getElementById(`other-input-${questionId}`);
+            if (otherInput) {
+                otherInput.style.display = 'none';
+                const textInput = otherInput.querySelector('input');
+                if (textInput) {
+                    textInput.value = '';
+                }
+            }
+        }
+
+        function updateAnswer(questionId, value) {
+            console.log('Updated answer for', questionId, ':', value);
+        }
+    </script>
+</body>
+</html>

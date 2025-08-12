@@ -155,10 +155,16 @@ function generateAnswerInput(question, questionId) {
 
 function handleOtherOption(questionId) {
     console.log('Handling other option for:', questionId);
+    console.log('Looking for element with ID:', `other-input-${questionId}`);
+    
     const otherInput = document.getElementById(`other-input-${questionId}`);
+    console.log('Found other input element:', otherInput);
+    
     if (otherInput) {
+        console.log('Setting display to block');
         otherInput.style.display = 'block';
         const textInput = otherInput.querySelector('input');
+        console.log('Found text input:', textInput);
         if (textInput) {
             textInput.focus();
             // Clear any previous answer for this question
@@ -166,6 +172,12 @@ function handleOtherOption(questionId) {
         }
     } else {
         console.error('Other input not found for:', questionId);
+        // Let's also check if the element exists with a different approach
+        const allOtherInputs = document.querySelectorAll('.other-input');
+        console.log('All other inputs found:', allOtherInputs.length);
+        allOtherInputs.forEach((input, index) => {
+            console.log(`Other input ${index}:`, input.id);
+        });
     }
 }
 
@@ -241,18 +253,31 @@ async function completeAssessment() {
 }
 
 function showEnhancedResults(result) {
+    console.log('Showing enhanced results:', result);
+    
     const container = document.getElementById('enhanced-assessment-container');
     const questionsContainer = document.getElementById('all-questions-container');
     
     // Hide questions and show results
     questionsContainer.style.display = 'none';
-    document.querySelector('.assessment-actions').style.display = 'none';
+    const assessmentActions = document.querySelector('.assessment-actions');
+    if (assessmentActions) {
+        assessmentActions.style.display = 'none';
+    }
+    
+    // Handle the BaseResponse structure
+    let assessmentText = 'Assessment results will be displayed here.';
+    if (result.data && result.data.assessment) {
+        assessmentText = result.data.assessment;
+    } else if (result.assessment) {
+        assessmentText = result.assessment;
+    }
     
     const resultsHtml = `
         <div class="assessment-results">
             <h3>🎉 Enhanced Assessment Complete!</h3>
             <div class="results-content">
-                ${result.assessment || 'Assessment results will be displayed here.'}
+                ${assessmentText}
             </div>
             <div class="results-actions">
                 <button onclick="downloadResults()" class="btn btn-info">📥 Download Results</button>
