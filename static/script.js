@@ -128,7 +128,7 @@ function generateAnswerInput(question, questionId) {
                 optionsHtml += `
                     <div class="answer-option">
                         <label>
-                            <input type="radio" name="${questionId}" value="other" onchange="handleOtherOption('${questionId}')">
+                            <input type="radio" name="${questionId}" value="other" onchange="console.log('Other radio clicked for:', '${questionId}'); handleOtherOption('${questionId}')" onclick="console.log('Other radio clicked (onclick) for:', '${questionId}')">
                             Other
                         </label>
                         <div class="other-input" id="other-input-${questionId}" style="display: none;">
