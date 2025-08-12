@@ -128,7 +128,7 @@ function generateAnswerInput(question, questionId) {
                 optionsHtml += `
                     <div class="answer-option">
                         <label>
-                            <input type="radio" name="${questionId}" value="other" onchange="console.log('Other radio clicked for:', '${questionId}'); handleOtherOption('${questionId}')" onclick="console.log('Other radio clicked (onclick) for:', '${questionId}')">
+                            <input type="radio" name="${questionId}" value="other" onchange="handleOtherOption('${questionId}')" onclick="handleOtherOption('${questionId}')">
                             Other
                         </label>
                         <div class="other-input" id="other-input-${questionId}" style="display: none;">
@@ -154,6 +154,7 @@ function generateAnswerInput(question, questionId) {
 }
 
 function handleOtherOption(questionId) {
+    console.log('=== HANDLE OTHER OPTION CALLED ===');
     console.log('Handling other option for:', questionId);
     console.log('Looking for element with ID:', `other-input-${questionId}`);
     
@@ -180,6 +181,9 @@ function handleOtherOption(questionId) {
         });
     }
 }
+
+// Make sure the function is globally accessible
+window.handleOtherOption = handleOtherOption;
 
 function handleRadioChange(questionId, value) {
     console.log('Handling radio change for:', questionId, 'value:', value);
