@@ -1,0 +1,83 @@
+{
+  "generated_at": "2025-08-11T07:34:59.680806",
+  "analysis_prompt": "\nYou are an expert in 45Q tax credits for carbon sequestration. Based on the documents in your knowledge base, I need you to create a comprehensive framework for determining eligibility.\n\nPlease provide:\n\n1. **CRITICAL ELIGIBILITY CRITERIA** - What are the absolute must-have requirements?\n2. **FACILITY TYPE QUESTIONS** - What questions help determine the type of facility?\n3. **TECHNICAL REQUIREMENTS** - What technical specifications matter?\n4. **OWNERSHIP & PERMITTING** - What ownership and legal questions are needed?\n5. **QUANTIFICATION QUESTIONS** - How do we measure CO2 capture and sequestration?\n6. **TIMELINE & OPERATIONS** - What operational details matter?\n7. **BONUS CREDIT FACTORS** - What questions help identify bonus opportunities?\n8. **FOLLOW-UP LOGIC** - What are the key decision points that determine next questions?\n\nFor each category, provide:\n- Specific questions to ask\n- Why each question matters\n- What the answer tells us about eligibility\n- What follow-up questions that answer should trigger\n\nBe thorough and specific. This will be used to create an intelligent assessment system.\n",
+  "question_framework": "1. **CRITICAL ELIGIBILITY CRITERIA**\n   - Questions: Has the carbon capture equipment been placed in service at the qualified facility? Has the 12-year period described in sections 45Q(a)(3)(A) and (4)(A) and \u00a7 1.45Q\u20131(c)(1) and (2) ended?\n   - Importance: These are the threshold requirements for eligibility.\n   - Implication: If the equipment is in service and the 12-year period has ended, the taxpayer may be eligible for a section 45Q credit.\n   - Follow-up: If eligible, the taxpayer must calculate the credit based on actual amounts of qualified carbon oxide captured and disposed of, injected, or utilized during the taxable year.\n\n2. **FACILITY TYPE QUESTIONS**\n   - Questions: Is the facility an applicable facility? Does it capture not less than 500,000 metric tons of qualified carbon oxide?\n   - Importance: These determine the type of facility and its capacity for carbon capture.\n   - Implication: If the facility meets these criteria, the taxpayer may be eligible for a section 45Q credit.\n   - Follow-up: If eligible, the taxpayer must provide details of the carbon capture equipment and the storage or utilization sites.\n\n3. **TECHNICAL REQUIREMENTS**\n   - Questions: Where is the qualified carbon oxide disposed of or injected? Where is it utilized?\n   - Importance: These determine the technical specifications of the carbon capture and sequestration process.\n   - Implication: The answers provide information about the technical feasibility and efficiency of the process.\n   - Follow-up: The taxpayer must provide the dollar amount of section 45Q credits claimed and retained, and the corresponding metric tons of qualified carbon oxide.\n\n4. **OWNERSHIP & PERMITTING**\n   - Questions: Who owns the carbon capture equipment? Is the owner physically or contractually ensuring the capture and disposal of carbon oxide?\n   - Importance: These determine the legal ownership and responsibility for the carbon capture process.\n   - Implication: The owner may be eligible for a section 45Q credit.\n   - Follow-up: The owner must provide their name, address, and taxpayer identification number.\n\n5. **QUANTIFICATION QUESTIONS**\n   - Questions: How much qualified carbon oxide is captured and disposed of, injected, or utilized during the taxable year?\n   - Importance: This determines the amount of carbon sequestration.\n   - Implication: The amount of carbon sequestration affects the amount of the section 45Q credit.\n   - Follow-up: The taxpayer must calculate the credit based on these amounts.\n\n6. **TIMELINE & OPERATIONS**\n   - Questions: When was the carbon capture equipment placed in service? When does the 12-year period end?\n   - Importance: These determine the operational timeline of the carbon capture process.\n   - Implication: The timeline affects the eligibility for the section 45Q credit.\n   - Follow-up: The taxpayer must provide information about the operational timeline.\n\n7. **BONUS CREDIT FACTORS**\n   - Questions: Are there any additional factors that could increase the amount of the section 45Q credit?\n   - Importance: These could provide bonus opportunities for the taxpayer.\n   - Implication: The taxpayer may be eligible for additional credits.\n   - Follow-up: The taxpayer must provide information about these factors.\n\n8. **FOLLOW-UP LOGIC**\n   - Decision Points: The key decision points are the eligibility criteria, the type of facility, the technical requirements, the ownership and legal questions, the quantification of carbon capture, the operational timeline, and the bonus credit factors.\n   - Next Questions: Depending on the answers to these decision points, the next questions could relate to the calculation of the credit, the operational details, the legal responsibilities, and the potential for additional credits.",
+  "sources": [
+    {
+      "content": "threshold requirements under paragraph \n(g)(1) of this section, the threshold \nrequirements under paragraph (g)(1) of \nthis section are deemed satisfied for the \ntaxable year in which the carbon \ncapture equipment was placed in \nservice at the qualified facility or the \ntaxable year in which the 12-year period \ndescribed in sections 45Q(a)(3)(A) and \n(4)(A) and \u00a7 1.45Q\u20131(c)(1) and (2) ends. \nThe taxpayer may be eligible for a \nsection 45Q credit for that taxable year \nbut must calculate the credit based on \nactual amounts of qualified carbon \noxide captured and disposed of, \ninjected, or utilized during the taxable \nyear. \n(4) Election for applicable facilities. In \nthe case of an applicable facility, for any \ntaxable year during which such facility \ncaptures not less than 500,000 metric \ntons of qualified carbon oxide, the \ntaxpayer described in section \n45Q(f)(3)(A)(ii) and \u00a7 1.45Q\u20131(h)(1)(ii) \n(that is, the person that owns the carbon \ncapture equipment and physically or",
+      "metadata": {
+        "page_label": "41",
+        "file_type": "pdf",
+        "creationdate": "2024-05-30T06:46:18+00:00",
+        "producer": "iText\u00ae Core 7.2.3 (production version) \u00a92000-2022 iText Group NV, Government Publishing Office",
+        "creator": "govinfo, U. S. Government Publishing Office",
+        "page": 40,
+        "total_pages": 46,
+        "file_name": "2021-00302.pdf",
+        "moddate": "2024-05-30T02:49:01-04:00",
+        "source": "app/data/documents/2021-00302.pdf"
+      }
+    },
+    {
+      "content": "threshold requirements under paragraph \n(g)(1) of this section, the threshold \nrequirements under paragraph (g)(1) of \nthis section are deemed satisfied for the \ntaxable year in which the carbon \ncapture equipment was placed in \nservice at the qualified facility or the \ntaxable year in which the 12-year period \ndescribed in sections 45Q(a)(3)(A) and \n(4)(A) and \u00a7 1.45Q\u20131(c)(1) and (2) ends. \nThe taxpayer may be eligible for a \nsection 45Q credit for that taxable year \nbut must calculate the credit based on \nactual amounts of qualified carbon \noxide captured and disposed of, \ninjected, or utilized during the taxable \nyear. \n(4) Election for applicable facilities. In \nthe case of an applicable facility, for any \ntaxable year during which such facility \ncaptures not less than 500,000 metric \ntons of qualified carbon oxide, the \ntaxpayer described in section \n45Q(f)(3)(A)(ii) and \u00a7 1.45Q\u20131(h)(1)(ii) \n(that is, the person that owns the carbon \ncapture equipment and physically or",
+      "metadata": {
+        "creator": "govinfo, U. S. Government Publishing Office",
+        "page_label": "41",
+        "producer": "iText\u00ae Core 7.2.3 (production version) \u00a92000-2022 iText Group NV, Government Publishing Office",
+        "creationdate": "2024-05-30T06:46:18+00:00",
+        "moddate": "2024-05-30T02:49:01-04:00",
+        "file_name": "2021-00302.pdf",
+        "file_type": "pdf",
+        "total_pages": 46,
+        "page": 40,
+        "source": "app/data/documents/2021-00302.pdf"
+      }
+    },
+    {
+      "content": "threshold requirements under paragraph \n(g)(1) of this section, the threshold \nrequirements under paragraph (g)(1) of \nthis section are deemed satisfied for the \ntaxable year in which the carbon \ncapture equipment was placed in \nservice at the qualified facility or the \ntaxable year in which the 12-year period \ndescribed in sections 45Q(a)(3)(A) and \n(4)(A) and \u00a7 1.45Q\u20131(c)(1) and (2) ends. \nThe taxpayer may be eligible for a \nsection 45Q credit for that taxable year \nbut must calculate the credit based on \nactual amounts of qualified carbon \noxide captured and disposed of, \ninjected, or utilized during the taxable \nyear. \n(4) Election for applicable facilities. In \nthe case of an applicable facility, for any \ntaxable year during which such facility \ncaptures not less than 500,000 metric \ntons of qualified carbon oxide, the \ntaxpayer described in section \n45Q(f)(3)(A)(ii) and \u00a7 1.45Q\u20131(h)(1)(ii) \n(that is, the person that owns the carbon \ncapture equipment and physically or",
+      "metadata": {
+        "creator": "govinfo, U. S. Government Publishing Office",
+        "file_name": "2021-00302.pdf",
+        "source": "app/data/documents/2021-00302.pdf",
+        "page": 40,
+        "file_type": "pdf",
+        "creationdate": "2024-05-30T06:46:18+00:00",
+        "total_pages": 46,
+        "moddate": "2024-05-30T02:49:01-04:00",
+        "producer": "iText\u00ae Core 7.2.3 (production version) \u00a92000-2022 iText Group NV, Government Publishing Office",
+        "page_label": "41"
+      }
+    },
+    {
+      "content": "of: \n(i) Each secure geological storage site \nwhere the qualified carbon oxide is \ndisposed of or injected, or \n(ii) Each site where the qualified \ncarbon oxide is utilized; \n(D) The dollar amount of section 45Q \ncredits the taxpayer is allowing each \ncredit claimant to claim and the \ncorresponding metric tons of qualified \ncarbon oxide; and \n(E) The dollar amount of section 45Q \ncredits retained by the electing taxpayer \nand the corresponding metric tons of \nqualified carbon oxide. \n(v) Requirements for section 45Q \ncredit claimant. For a section \n45Q(f)(3)(B) election to be valid, the \nsection 45Q credit claimant must \ninclude the following information on \nForm 8933\u2014 \n(A) The name, address, taxpayer \nidentification number of the credit \nclaimant; \n(B) The name, address, and taxpayer \nidentification number of each taxpayer \nmaking an election under section \n45Q(f)(3)(B) to allow the credit to the \ncredit claimant; \n(C) The name and location and e-",
+      "metadata": {
+        "source": "app/data/documents/2021-00302.pdf",
+        "page_label": "38",
+        "creator": "govinfo, U. S. Government Publishing Office",
+        "total_pages": 46,
+        "page": 37,
+        "moddate": "2024-05-30T02:49:01-04:00",
+        "producer": "iText\u00ae Core 7.2.3 (production version) \u00a92000-2022 iText Group NV, Government Publishing Office",
+        "file_type": "pdf",
+        "file_name": "2021-00302.pdf",
+        "creationdate": "2024-05-30T06:46:18+00:00"
+      }
+    },
+    {
+      "content": "of: \n(i) Each secure geological storage site \nwhere the qualified carbon oxide is \ndisposed of or injected, or \n(ii) Each site where the qualified \ncarbon oxide is utilized; \n(D) The dollar amount of section 45Q \ncredits the taxpayer is allowing each \ncredit claimant to claim and the \ncorresponding metric tons of qualified \ncarbon oxide; and \n(E) The dollar amount of section 45Q \ncredits retained by the electing taxpayer \nand the corresponding metric tons of \nqualified carbon oxide. \n(v) Requirements for section 45Q \ncredit claimant. For a section \n45Q(f)(3)(B) election to be valid, the \nsection 45Q credit claimant must \ninclude the following information on \nForm 8933\u2014 \n(A) The name, address, taxpayer \nidentification number of the credit \nclaimant; \n(B) The name, address, and taxpayer \nidentification number of each taxpayer \nmaking an election under section \n45Q(f)(3)(B) to allow the credit to the \ncredit claimant; \n(C) The name and location and e-",
+      "metadata": {
+        "page": 37,
+        "moddate": "2024-05-30T02:49:01-04:00",
+        "source": "app/data/documents/2021-00302.pdf",
+        "creator": "govinfo, U. S. Government Publishing Office",
+        "producer": "iText\u00ae Core 7.2.3 (production version) \u00a92000-2022 iText Group NV, Government Publishing Office",
+        "total_pages": 46,
+        "file_type": "pdf",
+        "page_label": "38",
+        "creationdate": "2024-05-30T06:46:18+00:00",
+        "file_name": "2021-00302.pdf"
+      }
+    }
+  ],
+  "confidence_score": 0.8245614035087718
+}

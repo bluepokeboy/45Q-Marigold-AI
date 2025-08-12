@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>45Q Tax Credit Application</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🏭 45Q Tax Credit Application</h1>
+            <p>AI-Powered Carbon Sequestration Tax Credit Analysis</p>
+        </header>
+
+        <nav class="tabs">
+            <button class="tab-btn active" onclick="showTab('eligibility')">📋 Eligibility Assessment</button>
+            <button class="tab-btn" onclick="showTab('forecast')">💰 Credit Forecasting</button>
+            <button class="tab-btn" onclick="showTab('questions')">❓ Ask Questions</button>
+            <button class="tab-btn" onclick="showTab('documents')">📄 Document Upload</button>
+        </nav>
+
+        <!-- Eligibility Assessment Tab -->
+        <div id="eligibility" class="tab-content active">
+            <h2>📋 Eligibility Assessment</h2>
+            <div id="eligibility-form">
+                <div class="form-group">
+                    <label for="session-id">Session ID:</label>
+                    <input type="text" id="session-id" value="company-123" placeholder="Enter session ID">
+                    <div class="button-group">
+                        <button onclick="startAssessment()" class="btn btn-primary">Start Traditional Assessment</button>
+                        <button onclick="startInteractiveAssessment()" class="btn btn-success">Start Interactive Assessment</button>
+                    </div>
+                </div>
+                
+                <div id="question-container" style="display: none;">
+                    <h3>Question <span id="question-number">1</span> of <span id="total-questions">15</span></h3>
+                    <div id="current-question"></div>
+                    <div id="answer-input"></div>
+                    <button onclick="submitAnswer()" class="btn btn-success">Submit Answer</button>
+                </div>
+
+                <div id="progress-bar">
+                    <div id="progress-fill"></div>
+                </div>
+
+                <div id="eligibility-results" style="display: none;">
+                    <h3>🎉 Assessment Complete!</h3>
+                    <div id="results-content"></div>
+                    <button onclick="getDetailedGuidance()" class="btn btn-info">Get Detailed Guidance</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Credit Forecasting Tab -->
+        <div id="forecast" class="tab-content">
+            <h2>💰 Credit Forecasting</h2>
+            <form id="forecast-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="facility-type">Facility Type:</label>
+                        <select id="facility-type" required>
+                            <option value="">Select facility type</option>
+                            <option value="Direct air capture facility">Direct Air Capture</option>
+                            <option value="Electric generation facility">Electric Generation</option>
+                            <option value="Industrial facility">Industrial Facility</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="annual-co2">Annual CO2 Captured (metric tons):</label>
+                        <input type="number" id="annual-co2" required min="1" value="100000">
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="capture-efficiency">Capture Efficiency (%):</label>
+                        <input type="number" id="capture-efficiency" required min="0" max="100" value="85" step="0.1">
+                    </div>
+                    <div class="form-group">
+                        <label for="sequestration-method">Sequestration Method:</label>
+                        <select id="sequestration-method" required>
+                            <option value="">Select method</option>
+                            <option value="Geological Storage">Geological Storage</option>
+                            <option value="Enhanced Oil Recovery">Enhanced Oil Recovery</option>
+                            <option value="Utilization">Utilization</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="start-date">Start Date:</label>
+                        <input type="date" id="start-date" required value="2025-01-01">
+                    </div>
+                    <div class="form-group">
+                        <label for="domestic-content">Domestic Content (%):</label>
+                        <input type="number" id="domestic-content" min="0" max="100" value="75">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" id="energy-community"> Located in Energy Community
+                    </label>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Calculate Credits</button>
+            </form>
+
+            <div id="forecast-results" style="display: none;">
+                <h3>💰 Credit Forecast Results</h3>
+                <div id="forecast-content"></div>
+            </div>
+        </div>
+
+        <!-- Ask Questions Tab -->
+        <div id="questions" class="tab-content">
+            <h2>❓ Ask Questions About 45Q</h2>
+            <div class="form-group">
+                <label for="question-input">Your Question:</label>
+                <textarea id="question-input" rows="4" placeholder="Ask anything about 45Q tax credits, eligibility, requirements, etc..."></textarea>
+                <div class="button-group">
+                    <button onclick="askQuestion()" class="btn btn-primary">Ask Question</button>
+                    <button onclick="analyzeDocumentsForQuestions()" class="btn btn-info">Analyze Documents for Better Questions</button>
+                    <button onclick="regenerateQuestionBase()" class="btn btn-warning">Regenerate Question Base</button>
+                </div>
+            </div>
+
+            <div id="question-results" style="display: none;">
+                <h3>🤖 AI Response</h3>
+                <div id="answer-content"></div>
+                <div id="confidence-score"></div>
+                <div id="sources"></div>
+            </div>
+        </div>
+
+        <!-- Document Upload Tab -->
+        <div id="documents" class="tab-content">
+            <h2>📄 Document Upload</h2>
+            <div class="form-group">
+                <label for="file-upload">Upload 45Q Documents:</label>
+                <input type="file" id="file-upload" multiple accept=".pdf,.txt,.docx">
+                <button onclick="uploadDocuments()" class="btn btn-primary">Upload Documents</button>
+            </div>
+
+            <div id="upload-results" style="display: none;">
+                <h3>📊 Upload Results</h3>
+                <div id="upload-content"></div>
+            </div>
+
+            <div id="document-stats">
+                <h3>📈 Current Document Status</h3>
+                <div id="stats-content">
+                    <p>Documents loaded: <span id="doc-count">2</span></p>
+                    <p>Total chunks: <span id="chunk-count">467</span></p>
+                    <button onclick="refreshStats()" class="btn btn-secondary">Refresh Stats</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html> 
