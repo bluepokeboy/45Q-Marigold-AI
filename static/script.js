@@ -140,7 +140,7 @@ function generateAnswerInput(question, questionId) {
                 optionsHtml += `
                     <div class="answer-option">
                         <label>
-                            <input type="radio" name="${questionId}" value="${option}" onchange="updateAnswer('${questionId}', '${option}')">
+                            <input type="radio" name="${questionId}" value="${option}" onchange="handleRadioChange('${questionId}', '${option}')">
                             ${option}
                         </label>
                     </div>
@@ -169,17 +169,27 @@ function handleOtherOption(questionId) {
     }
 }
 
+function handleRadioChange(questionId, value) {
+    console.log('Handling radio change for:', questionId, 'value:', value);
+    
+    // Hide any "Other" text input for this question
+    const otherInput = document.getElementById(`other-input-${questionId}`);
+    if (otherInput) {
+        otherInput.style.display = 'none';
+        // Clear the text input
+        const textInput = otherInput.querySelector('input');
+        if (textInput) {
+            textInput.value = '';
+        }
+    }
+    
+    // Update the answer
+    assessmentAnswers[questionId] = value;
+}
+
 function updateAnswer(questionId, value) {
     assessmentAnswers[questionId] = value;
     console.log('Updated answer for', questionId, ':', value);
-    
-    // If this is an "Other" text input, make sure the radio button is selected
-    if (value && value.trim() !== '') {
-        const radioButton = document.querySelector(`input[name="${questionId}"][value="other"]`);
-        if (radioButton) {
-            radioButton.checked = true;
-        }
-    }
 }
 
 async function completeAssessment() {

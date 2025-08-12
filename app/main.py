@@ -9,7 +9,7 @@ from fastapi.responses import FileResponse
 import os
 import json
 
-from app.config import settings
+from app.config import settings, get_llm_config
 from app.models.eligibility import (
     AssessmentRequest, AnswerSubmission, AssessmentResponse
 )
