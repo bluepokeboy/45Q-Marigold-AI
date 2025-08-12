@@ -482,6 +482,8 @@ header p {
 .other-input {
     margin-top: 10px;
     padding-left: 25px;
+    width: 200%; /* Make it twice as wide */
+    max-width: 400px; /* Limit maximum width */
 }
 
 .other-input input {

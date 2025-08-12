@@ -87,8 +87,12 @@ function showEnhancedAssessment() {
         return;
     }
     
-    // Hide the old question container
+    // Hide all other assessment containers
     document.getElementById('question-container').style.display = 'none';
+    const interactiveChat = document.getElementById('interactive-chat');
+    if (interactiveChat) {
+        interactiveChat.remove();
+    }
     
     // Show the enhanced assessment container
     container.style.display = 'block';
@@ -415,6 +419,16 @@ function showQuestion(assessmentData) {
     
     if (assessmentData.current_question) {
         currentQuestion = assessmentData.current_question;
+        
+        // Hide all other assessment containers
+        const enhancedContainer = document.getElementById('enhanced-assessment-container');
+        if (enhancedContainer) {
+            enhancedContainer.style.display = 'none';
+        }
+        const interactiveChat = document.getElementById('interactive-chat');
+        if (interactiveChat) {
+            interactiveChat.remove();
+        }
         
         // Show question container
         questionContainer.style.display = 'block';
@@ -996,8 +1010,12 @@ function showInteractiveChat(question) {
     const currentQuestionDiv = document.getElementById('current-question');
     const answerInputDiv = document.getElementById('answer-input');
     
-    // Hide the old form-based interface
+    // Hide all other assessment containers
     questionContainer.style.display = 'none';
+    const enhancedContainer = document.getElementById('enhanced-assessment-container');
+    if (enhancedContainer) {
+        enhancedContainer.style.display = 'none';
+    }
     
     // Create interactive chat interface
     const chatInterface = document.createElement('div');
