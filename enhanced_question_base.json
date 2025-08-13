@@ -1,1038 +1,431 @@
 {
-  "metadata": {
-    "generated_at": "2025-08-12T14:08:07.669941",
-    "total_categories": 10,
-    "total_questions": 78,
-    "description": "Enhanced 45Q tax credit eligibility assessment questions generated using ChatGPT"
-  },
   "categories": {
-    "facility_basic_info": {
-      "name": "Facility Basic Information",
+    "project_identification": {
+      "name": "Project Identification",
       "questions": [
         {
-          "id": "1",
-          "question": "What is the facility's physical address?",
+          "id": "project_name",
+          "question": "What is the name of your facility/project?",
           "type": "text",
-          "options": [],
           "required": true,
-          "category": "Facility Basic Information",
-          "category_key": "facility_basic_info"
+          "category": "Project Identification",
+          "category_key": "project_identification"
         },
         {
-          "id": "2",
-          "question": "What is the nature of the facility's operations?",
-          "type": "multiple_choice",
-          "options": [
-            "Power Generation",
-            "Industrial Emission",
-            "Direct Air Capture",
-            "Other"
-          ],
-          "required": true,
-          "category": "Facility Basic Information",
-          "category_key": "facility_basic_info"
-        },
-        {
-          "id": "3",
-          "question": "When was the facility put into service?",
+          "id": "project_location",
+          "question": "Where is the project located (city, state)?",
           "type": "text",
-          "options": [],
           "required": true,
-          "category": "Facility Basic Information",
-          "category_key": "facility_basic_info"
+          "category": "Project Identification",
+          "category_key": "project_identification"
         },
         {
-          "id": "4",
-          "question": "What is the ownership structure of the facility?",
-          "type": "multiple_choice",
-          "options": [
-            "Sole Proprietorship",
-            "Partnership",
-            "Corporation",
-            "Other"
-          ],
+          "id": "facility_owner",
+          "question": "Who owns the facility (you, your client, or a third party)?",
+          "type": "text",
           "required": true,
-          "category": "Facility Basic Information",
-          "category_key": "facility_basic_info"
+          "category": "Project Identification",
+          "category_key": "project_identification"
         },
         {
-          "id": "5",
-          "question": "Is the facility publicly or privately owned?",
-          "type": "multiple_choice",
-          "options": [
-            "Publicly Owned",
-            "Privately Owned",
-            "Other"
-          ],
+          "id": "technology_owner",
+          "question": "Who owns the capture technology?",
+          "type": "text",
           "required": true,
-          "category": "Facility Basic Information",
-          "category_key": "facility_basic_info"
+          "category": "Project Identification",
+          "category_key": "project_identification"
         },
         {
-          "id": "6",
-          "question": "Is the facility located on tribal land?",
-          "type": "multiple_choice",
-          "options": [
-            "Yes",
-            "No"
-          ],
+          "id": "stakeholder_type",
+          "question": "What type of stakeholder are you? (Project Developer, Carbon Capture Facility Owner, Technology Provider, Tax Equity Investor)",
+          "type": "text",
           "required": true,
-          "category": "Facility Basic Information",
-          "category_key": "facility_basic_info"
-        },
-        {
-          "id": "7",
-          "question": "Is the facility responsible for carbon capture and sequestration?",
-          "type": "multiple_choice",
-          "options": [
-            "Yes",
-            "No"
-          ],
-          "required": true,
-          "category": "Facility Basic Information",
-          "category_key": "facility_basic_info"
-        },
-        {
-          "id": "8",
-          "question": "Is the facility's carbon capture equipment originally placed in service on or after February 9, 2018?",
-          "type": "multiple_choice",
-          "options": [
-            "Yes",
-            "No"
-          ],
-          "required": true,
-          "category": "Facility Basic Information",
-          "category_key": "facility_basic_info"
+          "category": "Project Identification",
+          "category_key": "project_identification"
         }
       ]
     },
-    "facility_type_operations": {
-      "name": "Facility Type and Operations",
+    "sector_technology": {
+      "name": "Sector & Technology",
       "questions": [
         {
-          "id": "facility_type_operations_1",
-          "question": "What is the primary function of your facility?",
-          "type": "multiple_choice",
-          "options": [
-            "Power generation",
-            "Industrial processes",
-            "Natural gas processing",
-            "Direct air capture",
-            "Other"
-          ],
+          "id": "capture_type",
+          "question": "Is this project for Direct Air Capture (DAC) or capture from an industrial or power facility?",
+          "type": "text",
           "required": true,
-          "category": "Facility Type and Operations",
-          "category_key": "facility_type_operations"
+          "category": "Sector & Technology",
+          "category_key": "sector_technology"
         },
         {
-          "id": "facility_type_operations_2",
-          "question": "Does your facility currently capture and store CO2?",
-          "type": "multiple_choice",
-          "options": [
-            "Yes",
-            "No",
-            "Planning to in the future"
-          ],
+          "id": "construction_type",
+          "question": "Is this new construction or a retrofit of an existing facility?",
+          "type": "text",
           "required": true,
-          "category": "Facility Type and Operations",
-          "category_key": "facility_type_operations"
+          "category": "Sector & Technology",
+          "category_key": "sector_technology"
         },
         {
-          "id": "facility_type_operations_3",
-          "question": "What type of carbon capture technology does your facility use?",
-          "type": "multiple_choice",
-          "options": [
-            "Pre-combustion capture",
-            "Post-combustion capture",
-            "Oxy-fuel combustion",
-            "Not applicable",
-            "Other"
-          ],
+          "id": "co2_destination",
+          "question": "Will the captured CO₂ be **permanently stored** or **utilized**?",
+          "type": "text",
           "required": true,
-          "category": "Facility Type and Operations",
-          "category_key": "facility_type_operations"
+          "category": "Sector & Technology",
+          "category_key": "sector_technology"
         },
         {
-          "id": "facility_type_operations_4",
-          "question": "Where is the captured CO2 stored?",
-          "type": "multiple_choice",
-          "options": [
-            "Enhanced oil recovery",
-            "Deep saline formations",
-            "Basalt formations",
-            "Not applicable",
-            "Other"
-          ],
+          "id": "co2_use",
+          "question": "What will be done with the captured CO₂ (e.g., geologic storage, EOR, product utilization)?",
+          "type": "text",
           "required": true,
-          "category": "Facility Type and Operations",
-          "category_key": "facility_type_operations"
+          "category": "Sector & Technology",
+          "category_key": "sector_technology"
         },
         {
-          "id": "facility_type_operations_5",
-          "question": "Does your facility produce a minimum of 500,000 metric tons of CO2 per year?",
-          "type": "multiple_choice",
-          "options": [
-            "Yes",
-            "No"
-          ],
+          "id": "co2_measurement",
+          "question": "Will CO₂ be measured at both the point of capture and point of storage/use?",
+          "type": "text",
           "required": true,
-          "category": "Facility Type and Operations",
-          "category_key": "facility_type_operations"
+          "category": "Sector & Technology",
+          "category_key": "sector_technology"
         },
         {
-          "id": "facility_type_operations_6",
-          "question": "What is the source of CO2 emissions at your facility?",
-          "type": "multiple_choice",
-          "options": [
-            "Fossil fuel combustion",
-            "Industrial process emissions",
-            "Direct emissions from a natural source",
-            "Other"
-          ],
+          "id": "annual_capture",
+          "question": "What is the **annual CO₂ capture target** (metric tonnes/year), and does it meet the 45Q eligibility threshold?\n- DAC: ≥ 1,000 t/yr\n- Power: ≥ 18,750 t/yr and ≥ 75% of baseline CO₂\n- Industrial: ≥ 12,500 t/yr",
+          "type": "text",
           "required": true,
-          "category": "Facility Type and Operations",
-          "category_key": "facility_type_operations"
-        },
-        {
-          "id": "facility_type_operations_7",
-          "question": "Is the carbon capture equipment placed in service on or after February 9, 2018?",
-          "type": "multiple_choice",
-          "options": [
-            "Yes",
-            "No"
-          ],
-          "required": true,
-          "category": "Facility Type and Operations",
-          "category_key": "facility_type_operations"
-        },
-        {
-          "id": "facility_type_operations_8",
-          "question": "Is the CO2 captured at your facility utilized in any way, such as for enhanced oil recovery or manufacturing?",
-          "type": "multiple_choice",
-          "options": [
-            "Yes",
-            "No",
-            "Planning to in the future"
-          ],
-          "required": true,
-          "category": "Facility Type and Operations",
-          "category_key": "facility_type_operations"
+          "category": "Sector & Technology",
+          "category_key": "sector_technology"
         }
       ]
     },
-    "carbon_capture_technology": {
-      "name": "Carbon Capture Technology",
+    "eligibility_timing": {
+      "name": "Eligibility & Timing",
       "questions": [
         {
-          "id": "CCUS1",
-          "question": "What type of carbon capture technology does your facility use?",
-          "type": "multiple_choice",
-          "options": [
-            "Pre-combustion capture",
-            "Post-combustion capture",
-            "Oxy-fuel combustion",
-            "Chemical looping combustion",
-            "Other"
-          ],
-          "required": true,
-          "category": "Carbon Capture Technology",
-          "category_key": "carbon_capture_technology"
-        },
-        {
-          "id": "CCUS2",
-          "question": "Does your carbon capture technology meet the 45Q definition of carbon capture equipment?",
-          "type": "multiple_choice",
-          "options": [
-            "Yes",
-            "No",
-            "Unsure"
-          ],
-          "required": true,
-          "category": "Carbon Capture Technology",
-          "category_key": "carbon_capture_technology"
-        },
-        {
-          "id": "CCUS3",
-          "question": "What is the capture capacity of your carbon capture equipment in metric tons per year?",
+          "id": "us_location",
+          "question": "Will capture and storage/use occur **within the U.S. or its possessions**?",
           "type": "text",
-          "options": [],
           "required": true,
-          "category": "Carbon Capture Technology",
-          "category_key": "carbon_capture_technology"
+          "category": "Eligibility & Timing",
+          "category_key": "eligibility_timing"
         },
         {
-          "id": "CCUS4",
-          "question": "Is your carbon capture technology commercially viable and operational?",
-          "type": "multiple_choice",
-          "options": [
-            "Yes",
-            "No",
-            "In progress"
-          ],
-          "required": true,
-          "category": "Carbon Capture Technology",
-          "category_key": "carbon_capture_technology"
-        },
-        {
-          "id": "CCUS5",
-          "question": "Is the captured CO2 being utilized for Enhanced Oil Recovery (EOR) or is it being stored geologically?",
-          "type": "multiple_choice",
-          "options": [
-            "Enhanced Oil Recovery (EOR)",
-            "Geological storage",
-            "Both",
-            "Other"
-          ],
-          "required": true,
-          "category": "Carbon Capture Technology",
-          "category_key": "carbon_capture_technology"
-        },
-        {
-          "id": "CCUS6",
-          "question": "Does the carbon capture technology meet all environmental and safety standards?",
-          "type": "multiple_choice",
-          "options": [
-            "Yes",
-            "No",
-            "Unsure"
-          ],
-          "required": true,
-          "category": "Carbon Capture Technology",
-          "category_key": "carbon_capture_technology"
-        },
-        {
-          "id": "CCUS7",
-          "question": "Please describe any challenges your facility has encountered with its carbon capture technology.",
+          "id": "construction_deadline",
+          "question": "Will facility construction or carbon capture equipment installation **begin before Jan 1, 2033**?",
           "type": "text",
-          "options": [],
-          "required": false,
-          "category": "Carbon Capture Technology",
-          "category_key": "carbon_capture_technology"
+          "required": true,
+          "category": "Eligibility & Timing",
+          "category_key": "eligibility_timing"
         },
         {
-          "id": "CCUS8",
-          "question": "Is the captured carbon being used in a manner that qualifies for the 45Q tax credit?",
-          "type": "multiple_choice",
-          "options": [
-            "Yes",
-            "No",
-            "Unsure"
-          ],
+          "id": "safe_harbor",
+          "question": "Which *begin-construction safe harbor* applies — physical work or 5% safe harbor?",
+          "type": "text",
           "required": true,
-          "category": "Carbon Capture Technology",
-          "category_key": "carbon_capture_technology"
+          "category": "Eligibility & Timing",
+          "category_key": "eligibility_timing"
+        },
+        {
+          "id": "construction_start",
+          "question": "Estimated construction start date?",
+          "type": "text",
+          "required": true,
+          "category": "Eligibility & Timing",
+          "category_key": "eligibility_timing"
+        },
+        {
+          "id": "service_date",
+          "question": "Estimated placed-in-service date?",
+          "type": "text",
+          "required": true,
+          "category": "Eligibility & Timing",
+          "category_key": "eligibility_timing"
+        },
+        {
+          "id": "capture_start",
+          "question": "Expected start date for CO₂ capture operations?",
+          "type": "text",
+          "required": true,
+          "category": "Eligibility & Timing",
+          "category_key": "eligibility_timing"
         }
       ]
     },
-    "emissions_data": {
-      "name": "Emissions Data and Monitoring",
+    "co2_pathway": {
+      "name": "CO₂ Pathway & Storage/Utilization",
       "questions": [
         {
-          "id": "Q1",
-          "question": "What is your current annual emissions volume in metric tons of CO2?",
+          "id": "transport_method",
+          "question": "What transport method will be used to move CO₂ to storage/use?",
           "type": "text",
           "required": true,
-          "category": "Emissions Data and Monitoring",
-          "category_key": "emissions_data"
+          "category": "CO₂ Pathway & Storage/Utilization",
+          "category_key": "co2_pathway"
         },
         {
-          "id": "Q2",
-          "question": "What type of emissions monitoring system is currently in place at your facility?",
-          "type": "multiple_choice",
-          "options": [
-            "Continuous Emission Monitoring System (CEMS)",
-            "Predictive Emission Monitoring System (PEMS)",
-            "Portable Emission Measurement System (PEMS)",
-            "Other"
-          ],
-          "required": true,
-          "category": "Emissions Data and Monitoring",
-          "category_key": "emissions_data"
-        },
-        {
-          "id": "Q3",
-          "question": "Has your facility stored historical emissions data for the last five years?",
-          "type": "multiple_choice",
-          "options": [
-            "Yes",
-            "No"
-          ],
-          "required": true,
-          "category": "Emissions Data and Monitoring",
-          "category_key": "emissions_data"
-        },
-        {
-          "id": "Q4",
-          "question": "Is your facility currently capturing CO2 for storage or utilization?",
-          "type": "multiple_choice",
-          "options": [
-            "Yes",
-            "No"
-          ],
-          "required": true,
-          "category": "Emissions Data and Monitoring",
-          "category_key": "emissions_data"
-        },
-        {
-          "id": "Q5",
-          "question": "If you are capturing CO2, what percentage of total emissions is being captured?",
-          "type": "text",
-          "required": false,
-          "category": "Emissions Data and Monitoring",
-          "category_key": "emissions_data"
-        },
-        {
-          "id": "Q6",
-          "question": "Do you have a verified methodology for monitoring, reporting, and verifying the amount of qualified carbon oxide that is captured and disposed of, or used as a tertiary injectant?",
-          "type": "multiple_choice",
-          "options": [
-            "Yes",
-            "No",
-            "Not sure"
-          ],
-          "required": true,
-          "category": "Emissions Data and Monitoring",
-          "category_key": "emissions_data"
-        },
-        {
-          "id": "Q7",
-          "question": "What was the average CO2 emissions rate per year over the last five years?",
+          "id": "custody_meters",
+          "question": "Will custody-transfer meters be installed, and what CO₂ purity specification will apply?",
           "type": "text",
           "required": true,
-          "category": "Emissions Data and Monitoring",
-          "category_key": "emissions_data"
+          "category": "CO₂ Pathway & Storage/Utilization",
+          "category_key": "co2_pathway"
         },
         {
-          "id": "Q8",
-          "question": "Is the historical emissions data reported to any regulatory bodies?",
-          "type": "multiple_choice",
-          "options": [
-            "Yes",
-            "No",
-            "Not sure"
-          ],
+          "id": "storage_operator",
+          "question": "Who is the storage or utilization operator?",
+          "type": "text",
           "required": true,
-          "category": "Emissions Data and Monitoring",
-          "category_key": "emissions_data"
+          "category": "CO₂ Pathway & Storage/Utilization",
+          "category_key": "co2_pathway"
+        },
+        {
+          "id": "geologic_storage",
+          "question": "For **geologic storage**:\n- Class VI (or state equivalent) permit status?\n- Pore-space rights secured?\n- Storage agreement executed?\n- Does the storage definition align with 45Q secure geological storage?",
+          "type": "text",
+          "required": true,
+          "category": "CO₂ Pathway & Storage/Utilization",
+          "category_key": "co2_pathway"
+        },
+        {
+          "id": "utilization_eor",
+          "question": "For **utilization/EOR**:\n- Will Subpart UU + ISO 27916 be followed?\n- Who is the Qualified Independent Engineer?\n- What is the LCA boundary and frequency of reporting?",
+          "type": "text",
+          "required": true,
+          "category": "CO₂ Pathway & Storage/Utilization",
+          "category_key": "co2_pathway"
+        },
+        {
+          "id": "liability_risk",
+          "question": "Who bears liability and financial risk in the event of CO₂ recapture/leakage?",
+          "type": "text",
+          "required": true,
+          "category": "CO₂ Pathway & Storage/Utilization",
+          "category_key": "co2_pathway"
+        },
+        {
+          "id": "insurance_indemnities",
+          "question": "Are insurance or indemnities in place for recapture risk?",
+          "type": "text",
+          "required": true,
+          "category": "CO₂ Pathway & Storage/Utilization",
+          "category_key": "co2_pathway"
         }
       ]
     },
-    "project_scope": {
-      "name": "Project Scope and Timeline",
+    "mrv": {
+      "name": "MRV (Measurement, Reporting, Verification)",
       "questions": [
         {
-          "id": "1",
-          "question": "What is the primary purpose of your project?",
-          "type": "multiple_choice",
-          "options": [
-            "Carbon capture",
-            "Carbon storage",
-            "EOR project",
-            "Other"
-          ],
-          "required": true,
-          "category": "Project Scope and Timeline",
-          "category_key": "project_scope"
-        },
-        {
-          "id": "2",
-          "question": "What is the expected timeline for your project's completion?",
+          "id": "mrv_pathway",
+          "question": "Which MRV pathway applies:\n- EPA **Subpart RR** (geologic storage)\n- EPA **Subpart UU + ISO 27916** with independent engineer (utilization/EOR)",
           "type": "text",
-          "options": [],
           "required": true,
-          "category": "Project Scope and Timeline",
-          "category_key": "project_scope"
+          "category": "MRV (Measurement, Reporting, Verification)",
+          "category_key": "mrv"
         },
         {
-          "id": "3",
-          "question": "Will the captured carbon be stored or sequestered?",
-          "type": "multiple_choice",
-          "options": [
-            "Stored",
-            "Sequestered",
-            "Both",
-            "Other"
-          ],
-          "required": true,
-          "category": "Project Scope and Timeline",
-          "category_key": "project_scope"
-        },
-        {
-          "id": "4",
-          "question": "Is your project designed to capture at least 500,000 metric tons of carbon per year?",
-          "type": "multiple_choice",
-          "options": [
-            "Yes",
-            "No",
-            "Not sure"
-          ],
-          "required": true,
-          "category": "Project Scope and Timeline",
-          "category_key": "project_scope"
-        },
-        {
-          "id": "5",
-          "question": "Is your project expected to commence construction before January 1, 2026?",
-          "type": "multiple_choice",
-          "options": [
-            "Yes",
-            "No",
-            "Not sure"
-          ],
-          "required": true,
-          "category": "Project Scope and Timeline",
-          "category_key": "project_scope"
-        },
-        {
-          "id": "6",
-          "question": "Can you provide a detailed implementation plan for your project?",
+          "id": "mrv_responsibility",
+          "question": "Who is responsible for MRV — you or the facility owner?",
           "type": "text",
-          "options": [],
           "required": true,
-          "category": "Project Scope and Timeline",
-          "category_key": "project_scope"
+          "category": "MRV (Measurement, Reporting, Verification)",
+          "category_key": "mrv"
         },
         {
-          "id": "7",
-          "question": "Is your project located in the United States?",
-          "type": "multiple_choice",
-          "options": [
-            "Yes",
-            "No",
-            "Not sure"
-          ],
+          "id": "meter_accuracy",
+          "question": "Meter accuracy (±%), calibration schedule, and data retention policy?",
+          "type": "text",
           "required": true,
-          "category": "Project Scope and Timeline",
-          "category_key": "project_scope"
+          "category": "MRV (Measurement, Reporting, Verification)",
+          "category_key": "mrv"
         },
         {
-          "id": "8",
-          "question": "Is your project associated with a direct air capture facility?",
-          "type": "multiple_choice",
-          "options": [
-            "Yes",
-            "No",
-            "Not sure"
-          ],
+          "id": "ghgrp_reporting",
+          "question": "GHGRP reporting cadence and responsible party?",
+          "type": "text",
           "required": true,
-          "category": "Project Scope and Timeline",
-          "category_key": "project_scope"
+          "category": "MRV (Measurement, Reporting, Verification)",
+          "category_key": "mrv"
         }
       ]
     },
-    "financial_considerations": {
-      "name": "Financial Considerations",
+    "labor": {
+      "name": "Labor (Prevailing Wage & Apprenticeship)",
       "questions": [
         {
-          "id": "q1_financial_considerations",
-          "question": "What is the estimated cost of carbon capture equipment installation at your facility?",
+          "id": "prevailing_wage",
+          "question": "Will all construction contractors and subcontractors pay prevailing wage and meet apprenticeship hour % requirements?",
           "type": "text",
-          "options": [],
           "required": true,
-          "category": "Financial Considerations",
-          "category_key": "financial_considerations"
+          "category": "Labor (Prevailing Wage & Apprenticeship)",
+          "category_key": "labor"
         },
         {
-          "id": "q2_financial_considerations",
-          "question": "What is your projected annual operating cost for the carbon capture equipment?",
+          "id": "payroll_tracking",
+          "question": "How will certified payroll and apprentice hour tracking be handled?",
           "type": "text",
-          "options": [],
           "required": true,
-          "category": "Financial Considerations",
-          "category_key": "financial_considerations"
+          "category": "Labor (Prevailing Wage & Apprenticeship)",
+          "category_key": "labor"
         },
         {
-          "id": "q3_financial_considerations",
-          "question": "What is your estimated amount of carbon dioxide (CO2) capture per year in metric tons?",
+          "id": "epc_coordination",
+          "question": "Will you coordinate with the EPC to ensure compliance? *(Failure to comply removes the 5× multiplier.)*",
           "type": "text",
-          "options": [],
           "required": true,
-          "category": "Financial Considerations",
-          "category_key": "financial_considerations"
-        },
-        {
-          "id": "q4_financial_considerations",
-          "question": "What is the financial viability of your project without 45Q tax credits?",
-          "type": "multiple_choice",
-          "options": [
-            "Project is not financially viable without 45Q tax credits",
-            "Project is financially viable but 45Q tax credits would significantly improve the financial outlook",
-            "Project is financially viable without 45Q tax credits",
-            "Other"
-          ],
-          "required": true,
-          "category": "Financial Considerations",
-          "category_key": "financial_considerations"
-        },
-        {
-          "id": "q5_financial_considerations",
-          "question": "Have you conducted a financial feasibility study for utilizing the 45Q tax credit?",
-          "type": "multiple_choice",
-          "options": [
-            "Yes, and the study shows positive results",
-            "Yes, but the study does not show positive results",
-            "No, but planning to conduct soon",
-            "No, and no plans to conduct a study",
-            "Other"
-          ],
-          "required": true,
-          "category": "Financial Considerations",
-          "category_key": "financial_considerations"
-        },
-        {
-          "id": "q6_financial_considerations",
-          "question": "Are you currently utilizing or planning to utilize debt financing for your project?",
-          "type": "multiple_choice",
-          "options": [
-            "Yes, currently utilizing debt financing",
-            "Yes, planning to utilize debt financing in the future",
-            "No, not utilizing or planning to utilize debt financing",
-            "Other"
-          ],
-          "required": true,
-          "category": "Financial Considerations",
-          "category_key": "financial_considerations"
-        },
-        {
-          "id": "q7_financial_considerations",
-          "question": "What is your projected revenue from the sale of captured CO2?",
-          "type": "text",
-          "options": [],
-          "required": true,
-          "category": "Financial Considerations",
-          "category_key": "financial_considerations"
+          "category": "Labor (Prevailing Wage & Apprenticeship)",
+          "category_key": "labor"
         }
       ]
     },
-    "regulatory_compliance": {
-      "name": "Regulatory Compliance",
+    "financial_structure": {
+      "name": "Financial Structure",
       "questions": [
         {
-          "id": "1",
-          "question": "Does your facility have the necessary environmental permits to capture and store CO2?",
-          "type": "multiple_choice",
-          "options": [
-            "Yes",
-            "No",
-            "In progress",
-            "Other"
-          ],
+          "id": "credit_claimant",
+          "question": "Who will claim the 45Q tax credits — facility owner, capture equipment owner (via election), or investor?",
+          "type": "text",
           "required": true,
-          "category": "Regulatory Compliance",
-          "category_key": "regulatory_compliance"
+          "category": "Financial Structure",
+          "category_key": "financial_structure"
         },
         {
-          "id": "2",
-          "question": "Is your facility in compliance with all applicable local, state, and federal environmental regulations?",
-          "type": "multiple_choice",
-          "options": [
-            "Yes",
-            "No",
-            "In progress",
-            "Other"
-          ],
+          "id": "contracts_place",
+          "question": "Are contracts in place reflecting the claimant election?",
+          "type": "text",
           "required": true,
-          "category": "Regulatory Compliance",
-          "category_key": "regulatory_compliance"
+          "category": "Financial Structure",
+          "category_key": "financial_structure"
         },
         {
-          "id": "3",
-          "question": "Have there been any environmental regulation violations at your facility in the past three years?",
-          "type": "multiple_choice",
-          "options": [
-            "Yes",
-            "No",
-            "Unknown",
-            "Other"
-          ],
+          "id": "credit_monetization",
+          "question": "Will credits be monetized through tax equity financing, direct pay, or transferability (Section 6418)?",
+          "type": "text",
           "required": true,
-          "category": "Regulatory Compliance",
-          "category_key": "regulatory_compliance"
+          "category": "Financial Structure",
+          "category_key": "financial_structure"
         },
         {
-          "id": "4",
-          "question": "Is your facility equipped with carbon capture equipment that complies with the specifications outlined in the 45Q tax credit legislation?",
-          "type": "multiple_choice",
-          "options": [
-            "Yes",
-            "No",
-            "In progress",
-            "Other"
-          ],
+          "id": "pre_filing",
+          "question": "Has the pre-filing registration number process been initiated?",
+          "type": "text",
           "required": true,
-          "category": "Regulatory Compliance",
-          "category_key": "regulatory_compliance"
+          "category": "Financial Structure",
+          "category_key": "financial_structure"
         },
         {
-          "id": "5",
-          "question": "Has your facility's carbon capture and storage process been certified by a third-party verifier?",
-          "type": "multiple_choice",
-          "options": [
-            "Yes",
-            "No",
-            "In progress",
-            "Other"
-          ],
+          "id": "form_8933",
+          "question": "Who will file IRS Form 8933 and maintain compliance records?",
+          "type": "text",
           "required": true,
-          "category": "Regulatory Compliance",
-          "category_key": "regulatory_compliance"
+          "category": "Financial Structure",
+          "category_key": "financial_structure"
         },
         {
-          "id": "6",
-          "question": "Is your facility's captured CO2 being used for enhanced oil recovery (EOR) or stored in a secure geological formation?",
-          "type": "multiple_choice",
-          "options": [
-            "EOR",
-            "Secure geological storage",
-            "Both",
-            "None",
-            "Other"
-          ],
+          "id": "transferee_screening",
+          "question": "If transferring credits, has the transferee been screened for SFE compliance?",
+          "type": "text",
           "required": true,
-          "category": "Regulatory Compliance",
-          "category_key": "regulatory_compliance"
-        },
-        {
-          "id": "7",
-          "question": "Does your facility have a plan in place for monitoring, reporting, and verifying stored CO2?",
-          "type": "multiple_choice",
-          "options": [
-            "Yes",
-            "No",
-            "In progress",
-            "Other"
-          ],
-          "required": true,
-          "category": "Regulatory Compliance",
-          "category_key": "regulatory_compliance"
-        },
-        {
-          "id": "8",
-          "question": "If applicable, is your facility in compliance with the Environmental Protection Agency's (EPA) Underground Injection Control (UIC) program?",
-          "type": "multiple_choice",
-          "options": [
-            "Yes",
-            "No",
-            "Not applicable",
-            "Other"
-          ],
-          "required": true,
-          "category": "Regulatory Compliance",
-          "category_key": "regulatory_compliance"
+          "category": "Financial Structure",
+          "category_key": "financial_structure"
         }
       ]
     },
-    "technical_requirements": {
-      "name": "Technical Requirements",
+    "foreign_entity": {
+      "name": "Foreign Entity of Concern (FEOC/SFE)",
       "questions": [
         {
-          "id": "q1",
-          "question": "What type of carbon capture equipment does your facility use?",
-          "type": "multiple_choice",
-          "options": [
-            "Pre-combustion capture",
-            "Post-combustion capture",
-            "Oxy-fuel combustion",
-            "Other"
-          ],
-          "required": true,
-          "category": "Technical Requirements",
-          "category_key": "technical_requirements"
-        },
-        {
-          "id": "q2",
-          "question": "What is the capture efficiency of your carbon capture equipment?",
+          "id": "covered_nation_suppliers",
+          "question": "Will any project equipment, sensors, MRV systems, or control software come from covered-nation suppliers (China, Russia, North Korea, Iran)?",
           "type": "text",
           "required": true,
-          "category": "Technical Requirements",
-          "category_key": "technical_requirements"
+          "category": "Foreign Entity of Concern (FEOC/SFE)",
+          "category_key": "foreign_entity"
         },
         {
-          "id": "q3",
-          "question": "Does your facility have a secure geological storage for sequestering CO2?",
-          "type": "multiple_choice",
-          "options": [
-            "Yes",
-            "No",
-            "In progress",
-            "Other"
-          ],
-          "required": true,
-          "category": "Technical Requirements",
-          "category_key": "technical_requirements"
-        },
-        {
-          "id": "q4",
-          "question": "What is the capacity of CO2 your facility can sequester annually?",
+          "id": "sfe_manufacturing",
+          "question": "Are any spare parts, reagents, or chemicals manufactured by an SFE?",
           "type": "text",
           "required": true,
-          "category": "Technical Requirements",
-          "category_key": "technical_requirements"
+          "category": "Foreign Entity of Concern (FEOC/SFE)",
+          "category_key": "foreign_entity"
         },
         {
-          "id": "q5",
-          "question": "Does your facility use CO2 for Enhanced Oil Recovery (EOR)?",
-          "type": "multiple_choice",
-          "options": [
-            "Yes",
-            "No",
-            "In progress",
-            "Other"
-          ],
+          "id": "foreign_ownership",
+          "question": "Does any foreign shareholder or combined group own ≥ 25% voting rights, equity, or board seats?",
+          "type": "text",
           "required": true,
-          "category": "Technical Requirements",
-          "category_key": "technical_requirements"
+          "category": "Foreign Entity of Concern (FEOC/SFE)",
+          "category_key": "foreign_entity"
         },
         {
-          "id": "q6",
-          "question": "Does your facility meet the EPA's Greenhouse Gas Reporting Program (GHGRP) requirements?",
-          "type": "multiple_choice",
-          "options": [
-            "Yes",
-            "No",
-            "In progress",
-            "Other"
-          ],
+          "id": "covered_nation_links",
+          "question": "Are any board members, executives, or key decision-makers linked to covered-nation governments or militaries?",
+          "type": "text",
           "required": true,
-          "category": "Technical Requirements",
-          "category_key": "technical_requirements"
+          "category": "Foreign Entity of Concern (FEOC/SFE)",
+          "category_key": "foreign_entity"
         },
         {
-          "id": "q7",
-          "question": "Is the captured CO2 planned to be used or sequestered in a way that qualifies for 45Q tax credits?",
-          "type": "multiple_choice",
-          "options": [
-            "Yes",
-            "No",
-            "In progress",
-            "Other"
-          ],
+          "id": "cloud_services",
+          "question": "Does the project require cloud/data services hosted in covered nations?",
+          "type": "text",
           "required": true,
-          "category": "Technical Requirements",
-          "category_key": "technical_requirements"
+          "category": "Foreign Entity of Concern (FEOC/SFE)",
+          "category_key": "foreign_entity"
         },
         {
-          "id": "q8",
-          "question": "Does your facility have a monitoring, reporting, and verification (MRV) plan approved by the EPA?",
-          "type": "multiple_choice",
-          "options": [
-            "Yes",
-            "No",
-            "In progress",
-            "Other"
-          ],
+          "id": "sfe_contractors",
+          "question": "Will any on-site contractors or subcontractors be SFEs or use SFE equipment?",
+          "type": "text",
           "required": true,
-          "category": "Technical Requirements",
-          "category_key": "technical_requirements"
+          "category": "Foreign Entity of Concern (FEOC/SFE)",
+          "category_key": "foreign_entity"
+        },
+        {
+          "id": "sfe_financing",
+          "question": "Is any portion of project financing from SFE-controlled sources?",
+          "type": "text",
+          "required": true,
+          "category": "Foreign Entity of Concern (FEOC/SFE)",
+          "category_key": "foreign_entity"
+        },
+        {
+          "id": "transferee_sfe_screening",
+          "question": "If transferring credits, has the transferee passed SFE screening?",
+          "type": "text",
+          "required": true,
+          "category": "Foreign Entity of Concern (FEOC/SFE)",
+          "category_key": "foreign_entity"
         }
       ]
     },
-    "partnerships_contracts": {
-      "name": "Partnerships and Contracts",
+    "additional_incentives": {
+      "name": "Additional Incentives (Stacking)",
       "questions": [
         {
-          "id": "1",
-          "question": "Do you have any partnerships or contracts with entities that capture, use, or sequester carbon?",
-          "type": "multiple_choice",
-          "options": [
-            "Yes",
-            "No",
-            "I don't know"
-          ],
-          "required": true,
-          "category": "Partnerships and Contracts",
-          "category_key": "partnerships_contracts"
-        },
-        {
-          "id": "2",
-          "question": "If yes, do these partners or contractors follow the standards and requirements for qualifications for 45Q tax credits?",
-          "type": "multiple_choice",
-          "options": [
-            "Yes",
-            "No",
-            "I don't know"
-          ],
-          "required": false,
-          "category": "Partnerships and Contracts",
-          "category_key": "partnerships_contracts"
-        },
-        {
-          "id": "3",
-          "question": "Does any third-party entity own or control the carbon capture equipment used at your facility?",
-          "type": "multiple_choice",
-          "options": [
-            "Yes",
-            "No",
-            "I don't know"
-          ],
-          "required": true,
-          "category": "Partnerships and Contracts",
-          "category_key": "partnerships_contracts"
-        },
-        {
-          "id": "4",
-          "question": "If yes, does this third party comply with the 45Q tax credit regulations?",
-          "type": "multiple_choice",
-          "options": [
-            "Yes",
-            "No",
-            "I don't know"
-          ],
-          "required": false,
-          "category": "Partnerships and Contracts",
-          "category_key": "partnerships_contracts"
-        },
-        {
-          "id": "5",
-          "question": "Are all contractual agreements with partners in compliance with the terms of the 45Q tax credit?",
-          "type": "multiple_choice",
-          "options": [
-            "Yes",
-            "No",
-            "I don't know"
-          ],
-          "required": true,
-          "category": "Partnerships and Contracts",
-          "category_key": "partnerships_contracts"
-        },
-        {
-          "id": "6",
-          "question": "If you have contracts with third parties, do these contracts include specific provisions to ensure the captured carbon meets the 45Q tax credit requirements?",
-          "type": "multiple_choice",
-          "options": [
-            "Yes",
-            "No",
-            "I don't know"
-          ],
-          "required": false,
-          "category": "Partnerships and Contracts",
-          "category_key": "partnerships_contracts"
-        },
-        {
-          "id": "7",
-          "question": "Please provide any additional information about your partnerships, contracts, or third-party relationships that could be relevant to the 45Q tax credit.",
+          "id": "energy_community",
+          "question": "Is this project located in an \"energy community\" (relevant for other credits but not a 45Q adder)?",
           "type": "text",
-          "options": [],
-          "required": false,
-          "category": "Partnerships and Contracts",
-          "category_key": "partnerships_contracts"
-        }
-      ]
-    },
-    "risk_assessment": {
-      "name": "Risk Assessment",
-      "questions": [
-        {
-          "id": "risk_001",
-          "question": "Does your facility have a detailed risk mitigation strategy for the capture and storage of CO2 in place?",
-          "type": "multiple_choice",
-          "options": [
-            "Yes",
-            "No",
-            "In Process",
-            "Other"
-          ],
           "required": true,
-          "category": "Risk Assessment",
-          "category_key": "risk_assessment"
+          "category": "Additional Incentives (Stacking)",
+          "category_key": "additional_incentives"
         },
         {
-          "id": "risk_002",
-          "question": "Has your facility undergone a financial risk assessment to ensure project feasibility, considering the 45Q tax credit?",
-          "type": "multiple_choice",
-          "options": [
-            "Yes",
-            "No",
-            "In Process",
-            "Other"
-          ],
+          "id": "state_utility_credits",
+          "question": "Are you pursuing any **state-level or utility** grants/credits to stack with 45Q?",
+          "type": "text",
           "required": true,
-          "category": "Risk Assessment",
-          "category_key": "risk_assessment"
+          "category": "Additional Incentives (Stacking)",
+          "category_key": "additional_incentives"
         },
         {
-          "id": "risk_003",
-          "question": "Is your facility aware of all regulatory compliance requirements related to the 45Q tax credit?",
-          "type": "multiple_choice",
-          "options": [
-            "Yes",
-            "No",
-            "In Process",
-            "Other"
-          ],
+          "id": "other_credits",
+          "question": "Any interactions or trade-offs with 48C, 45V, ITC, or PTC credits?",
+          "type": "text",
           "required": true,
-          "category": "Risk Assessment",
-          "category_key": "risk_assessment"
-        },
-        {
-          "id": "risk_004",
-          "question": "Have you identified potential technical risks that could impact the successful implementation of CO2 capture and storage?",
-          "type": "multiple_choice",
-          "options": [
-            "Yes",
-            "No",
-            "In Process",
-            "Other"
-          ],
-          "required": true,
-          "category": "Risk Assessment",
-          "category_key": "risk_assessment"
-        },
-        {
-          "id": "risk_005",
-          "question": "Does your facility have a contingency plan in place to manage potential risks to the project?",
-          "type": "multiple_choice",
-          "options": [
-            "Yes",
-            "No",
-            "In Process",
-            "Other"
-          ],
-          "required": true,
-          "category": "Risk Assessment",
-          "category_key": "risk_assessment"
-        },
-        {
-          "id": "risk_006",
-          "question": "Has your facility conducted a feasibility study for the project considering the 45Q tax credit?",
-          "type": "multiple_choice",
-          "options": [
-            "Yes",
-            "No",
-            "In Process",
-            "Other"
-          ],
-          "required": true,
-          "category": "Risk Assessment",
-          "category_key": "risk_assessment"
-        },
-        {
-          "id": "risk_007",
-          "question": "Does your facility have a clear understanding of the financial implications of non-compliance with 45Q regulations?",
-          "type": "multiple_choice",
-          "options": [
-            "Yes",
-            "No",
-            "In Process",
-            "Other"
-          ],
-          "required": true,
-          "category": "Risk Assessment",
-          "category_key": "risk_assessment"
-        },
-        {
-          "id": "risk_008",
-          "question": "Could any potential legal or regulatory changes impact your facility's eligibility for the 45Q tax credit?",
-          "type": "multiple_choice",
-          "options": [
-            "Yes",
-            "No",
-            "Unsure",
-            "Other"
-          ],
-          "required": true,
-          "category": "Risk Assessment",
-          "category_key": "risk_assessment"
+          "category": "Additional Incentives (Stacking)",
+          "category_key": "additional_incentives"
         }
       ]
     }
