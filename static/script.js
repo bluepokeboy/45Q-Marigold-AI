@@ -341,13 +341,13 @@ function showEnhancedResults(result) {
     
     const resultsHtml = `
         <div class="assessment-results">
-            <h3>🎉 Enhanced Assessment Complete!</h3>
+            <h3>Assessment Complete</h3>
             <div class="results-content">
                 ${assessmentText}
             </div>
             <div class="results-actions">
-                <button onclick="downloadResults()" class="btn btn-info">📥 Download Results</button>
-                <button onclick="resetAssessment()" class="btn btn-warning">🔄 Start New Assessment</button>
+                <button onclick="downloadResults()" class="btn btn-info">Download Results</button>
+                <button onclick="resetAssessment()" class="btn btn-warning">Start New Assessment</button>
             </div>
         </div>
     `;
@@ -637,7 +637,7 @@ function displayDetailedGuidance(guidance) {
     
     if (guidance.rag_guidance && guidance.rag_guidance.answer) {
         guidanceHtml += `
-            <h4>🤖 AI Analysis</h4>
+            <h4>AI Analysis</h4>
             <p>${guidance.rag_guidance.answer}</p>
             <div class="confidence-score">Confidence: ${(guidance.rag_guidance.confidence_score * 100).toFixed(1)}%</div>
         `;
@@ -645,7 +645,7 @@ function displayDetailedGuidance(guidance) {
     
     if (guidance.facility_info) {
         guidanceHtml += `
-            <h4>🏭 Facility Information</h4>
+            <h4>Facility Information</h4>
             <p><strong>Name:</strong> ${guidance.facility_info.facility_name}</p>
             <p><strong>Type:</strong> ${guidance.facility_info.facility_type}</p>
             <p><strong>Location:</strong> ${guidance.facility_info.location_state}</p>
@@ -723,7 +723,7 @@ function displayForecastResults(result) {
         const forecast = result.forecast;
         forecastContent.innerHTML = `
             <div class="forecast-card">
-                <h4>💰 Credit Forecast Results</h4>
+                <h4>Credit Forecast Results</h4>
                 <p><strong>Total Credits (10 years):</strong> $${forecast.total_credits_10_years?.toLocaleString() || 'N/A'}</p>
                 <p><strong>Total Value (10 years):</strong> $${forecast.total_value_10_years?.toLocaleString() || 'N/A'}</p>
                 <p><strong>Total Credits (12 years):</strong> $${forecast.total_credits_12_years?.toLocaleString() || 'N/A'}</p>
@@ -779,7 +779,7 @@ function displayQuestionResults(result) {
     
     answerContent.innerHTML = `
         <div class="answer-card">
-            <h4>🤖 AI Response</h4>
+            <h4>AI Response</h4>
             <p>${result.answer}</p>
         </div>
     `;
@@ -791,7 +791,7 @@ function displayQuestionResults(result) {
     if (result.sources && result.sources.length > 0) {
         sources.innerHTML = `
             <div class="sources">
-                <h4>📚 Sources</h4>
+                <h4>Sources</h4>
                 ${result.sources.map(source => `
                     <div class="source-item">
                         <p>${source.content.substring(0, 200)}...</p>

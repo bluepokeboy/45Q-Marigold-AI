@@ -9,19 +9,19 @@
 <body>
     <div class="container">
         <header>
-            <h1>🏭 45Q Tax Credit Application</h1>
+            <h1>45Q Tax Credit Application</h1>
             <p>AI-Powered Carbon Sequestration Tax Credit Analysis</p>
         </header>
 
         <nav class="tabs">
-            <button class="tab-btn active" onclick="showTab('eligibility')">📋 Eligibility Assessment</button>
-            <button class="tab-btn" onclick="showTab('forecast')">💰 Credit Forecasting</button>
-            <button class="tab-btn" onclick="showTab('questions')">❓ Ask Questions</button>
+            <button class="tab-btn active" onclick="showTab('eligibility')">Eligibility Assessment</button>
+            <button class="tab-btn" onclick="showTab('forecast')">Credit Forecasting</button>
+            <button class="tab-btn" onclick="showTab('questions')">Ask Questions</button>
         </nav>
 
         <!-- Eligibility Assessment Tab -->
         <div id="eligibility" class="tab-content active">
-            <h2>📋 Eligibility Assessment</h2>
+            <h2>Eligibility Assessment</h2>
             <div id="eligibility-form">
                 <div class="form-group">
                     <label for="session-id">Session ID:</label>
@@ -33,15 +33,15 @@
                 </div>
                 
                 <div id="enhanced-assessment-container" style="display: none;">
-                    <h3>📋 Enhanced 45Q Eligibility Assessment</h3>
+                    <h3>Enhanced 45Q Eligibility Assessment</h3>
                     <p>Please answer the following questions to determine your 45Q tax credit eligibility. All questions are optional but more complete answers will provide better assessment results.</p>
                     
                     <div id="all-questions-container"></div>
                     
                     <div class="assessment-actions">
-                        <button onclick="completeAssessment()" class="btn btn-success btn-large">🎯 Complete Assessment</button>
-                        <button onclick="saveProgress()" class="btn btn-secondary">💾 Save Progress</button>
-                        <button onclick="resetAssessment()" class="btn btn-warning">🔄 Reset</button>
+                        <button onclick="completeAssessment()" class="btn btn-success btn-large">Complete Assessment</button>
+                        <button onclick="saveProgress()" class="btn btn-secondary">Save Progress</button>
+                        <button onclick="resetAssessment()" class="btn btn-warning">Reset</button>
                     </div>
                 </div>
 
@@ -66,7 +66,7 @@
 
         <!-- Credit Forecasting Tab -->
         <div id="forecast" class="tab-content">
-            <h2>💰 Credit Forecasting</h2>
+            <h2>Credit Forecasting</h2>
             <form id="forecast-form">
                 <div class="form-row">
                     <div class="form-group">
@@ -122,14 +122,14 @@
             </form>
 
             <div id="forecast-results" style="display: none;">
-                <h3>💰 Credit Forecast Results</h3>
+                <h3>Credit Forecast Results</h3>
                 <div id="forecast-content"></div>
             </div>
         </div>
 
         <!-- Ask Questions Tab -->
         <div id="questions" class="tab-content">
-            <h2>❓ Ask Questions About 45Q</h2>
+            <h2>Ask Questions About 45Q</h2>
             <div class="form-group">
                 <label for="question-input">Your Question:</label>
                 <textarea id="question-input" rows="4" placeholder="Ask anything about 45Q tax credits, eligibility, requirements, etc..."></textarea>
@@ -139,7 +139,7 @@
             </div>
 
             <div id="question-results" style="display: none;">
-                <h3>🤖 AI Response</h3>
+                <h3>AI Response</h3>
                 <div id="answer-content"></div>
                 <div id="confidence-score"></div>
                 <div id="sources"></div>
